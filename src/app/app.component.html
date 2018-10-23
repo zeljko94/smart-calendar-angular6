@@ -1,0 +1,13 @@
+
+
+
+
+
+
+<div class="wrapper">
+    <app-header *ngIf="isLogged()"></app-header>
+
+    <app-leftside *ngIf="isLogged()"></app-leftside>
+    <router-outlet></router-outlet>
+
+    <app-footer *ngIf="isLogged()"></app-footer>

@@ -1,0 +1,113 @@
+
+
+
+
+
+<div class="content-wrapper" style="min-height: 600px;">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <h1>
+          Pregled rasprave foruma
+          <!--<small>Dodavanje predavača</small>-->
+        </h1>
+        
+        <ol class="breadcrumb">
+            <li><a [routerLink]="['/admin/dashboard']"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+            <li><a [routerLink]="['/admin/forum']"><i class="fa fa-comment"></i> Forumi</a></li>
+            <li class="active">Pregled rasprave</li>
+        </ol>
+      </section>
+      
+  
+  
+     <!-- Main content -->
+     <section class="content">
+      <div class="row">
+        <div class="col-xs-12">
+          
+  
+  
+  
+  
+              <!-- OSNOVI DETALJI -->
+              <div class="box">
+                  <div class="box-header with-border  text-center">
+                    <h1 class="box-title" style="margin-bottom: 0px;font-size: 37px;font-weight: bold;">Forum - Opća rasprava</h1>  
+                  </div>
+                  
+                <div class="box-body">
+                  <div class="row">
+                    <div class="col-xs-12">
+  
+                      
+                      <h2>Objave korisnika</h2>
+                      <hr>
+                      <ng-container *ngIf="isLoaded">
+                        
+                        <h3 *ngIf="forum.Posts.length <= 0" class="text-danger">Ova rasprava još nema komentara!</h3>
+                        <div class="post clearfix" style="margin-left: 25px;" *ngFor="let c of forum.Posts">
+                          <div class="user-block">
+                            <img class="img-circle img-bordered-sm" [src]="c.Kreator.ProfileImage.DataUrl">
+                            <span class="username">
+                              <a href="#">{{c.Kreator.Name}} {{c.Kreator.LastName}}</a>
+  
+                              
+                          
+  
+                            <div *ngIf="loggedID == c.Kreator.ID" class="pull-right">
+                                <button class="btn btn-lg btn-success" style="margin-right: 20px;">
+                                  <i class="fa fa-edit"></i>
+                                  &nbsp;
+                                  Edit
+                                </button>
+                                <button (click)="brisiKomentar(c.ID)" class="btn btn-lg btn-danger">
+                                  <i class="fa fa-trash"></i>
+                                  &nbsp;
+                                  Briši
+                                </button>
+                              </div>
+                            </span>
+                            <span class="description">Posts a message - {{c.Datum | date: 'dd. MM. yyyy. HH:mm'}}</span>
+                          
+                          </div>
+                          <p style="font-size: 20px;word-break: break-all;white-space: normal;">{{c.Poruka}} </p>
+                        </div>
+  
+                        <hr>
+                        <form class="form-horizontal ng-untouched ng-pristine ng-valid" novalidate="">
+                          <div class="form-group margin-bottom-none">
+                            <div class="col-sm-9">
+                              <!--<input class="form-control input-lg" placeholder="Unesite komentar...">-->
+                              <textarea name="message" [(ngModel)]="comment.Poruka" placeholder="Komentar..." class="form-control"></textarea>
+                            </div>
+                            <div class="col-sm-3">
+                              <button (click)="dodaj()" class="btn btn-primary pull-right btn-block btn-lg" type="submit">
+                                <i class="fa fa-send"></i>
+                                 &nbsp;&nbsp; Komentiraj 
+                                </button>
+                              </div>
+                            </div>
+                        </form>
+                      </ng-container>
+  
+                    </div>
+                  </div>
+  
+  
+  
+                </div>
+                <!-- /.box-body -->
+                <div class="box-footer">
+                  <!--<app-pagination #paginator></app-pagination>-->
+                </div>
+              </div>
+  
+  
+      </div>
+      <!-- /.tab-pane -->
+    </div>
+    </section>
+  
+  <div class="control-sidebar-bg"></div>
+  
+  

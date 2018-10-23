@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>exploode | Predmeti</title>
+  <!-- Tell the browser to be responsive to screen width -->
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+  <!-- Bootstrap 3.3.7 -->
+  <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css">
+  <!-- Ionicons -->
+  <link rel="stylesheet" href="bower_components/Ionicons/css/ionicons.min.css">
+  <!-- fullCalendar -->
+  <link rel="stylesheet" href="bower_components/fullcalendar/dist/fullcalendar.min.css">
+  <link rel="stylesheet" href="bower_components/fullcalendar/dist/fullcalendar.print.min.css" media="print">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="dist/css/AdminLTE.min.css">
+  <!-- AdminLTE Skins. Choose a skin from the css/skins
+       folder instead of downloading all of them to reduce the load. -->
+  <link rel="stylesheet" href="dist/css/skins/_all-skins.min.css">
+
+  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <![endif]-->
+
+  <!-- Google Font -->
+  <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+</head>
+<body class="hold-transition skin-black sidebar-mini">
+<div class="wrapper">
+
+ <!-- kopirati za svaku stranicu-->
+
+
+ <header class="main-header">
+    <!-- Logo -->
+    <a href="index.html" class="logo">
+      <!-- mini logo for sidebar mini 50x50 pixels -->
+      <span class="logo-mini"><img src="dist/img/e.png" width="70%"></span>
+      <!-- logo for regular state and mobile devices -->
+      <span class="logo-lg"><img src="dist/img/exploode_black.png" width="70%"></span>
+    </a>
+    <!-- Header Navbar: style can be found in header.less -->
+    <nav class="navbar navbar-static-top">
+      <!-- Sidebar toggle button-->
+      <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
+        <span class="sr-only">Toggle navigation</span>
+      </a>
+
+      <div class="navbar-custom-menu">
+        <ul class="nav navbar-nav">
+          
+          <!-- User Account: style can be found in dropdown.less -->
+          <li class="dropdown user user-menu">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              <img src="dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
+              <span class="hidden-xs">Ime Prezime</span>
+            </a>
+            <ul class="dropdown-menu">
+              <!-- User image -->
+              <li class="user-header">
+                <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+
+                <p>
+                  Ime Prezime - Web Developer
+                  <small>Member since Nov. 2012</small>
+                </p>
+              </li>
+              <!-- Menu Body -->
+              
+              <!-- Menu Footer-->
+              <li class="user-footer">
+                <div class="pull-left">
+                  <a href="#" class="btn btn-default btn-flat">Profile</a>
+                </div>
+                <div class="pull-right">
+                  <a href="#" class="btn btn-default btn-flat">Sign out</a>
+                </div>
+              </li>
+            </ul>
+          </li>
+          
+        </ul>
+      </div>
+    </nav>
+  </header>
+  <!-- Left side column. contains the logo and sidebar -->
+  <aside class="main-sidebar">
+    <!-- sidebar: style can be found in sidebar.less -->
+    <section class="sidebar">
+      <!-- Sidebar user panel -->
+      <div class="user-panel">
+        <div class="pull-left image">
+          <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+        </div>
+        <div class="pull-left info">
+          <p>Ime Prezime</p>
+          <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+        </div>
+      </div>
+      <!-- search form -->
+      <form action="#" method="get" class="sidebar-form">
+        <div class="input-group">
+          <input type="text" name="q" class="form-control" placeholder="Search...">
+          <span class="input-group-btn">
+                <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>
+                </button>
+              </span>
+        </div>
+      </form>
+      <!-- /.search form -->
+      <!-- sidebar menu: : style can be found in sidebar.less -->
+      <ul class="sidebar-menu" data-widget="tree">
+        <li class="header">NAVIGACIJA</li>
+
+        <li>
+            <a href="index.html">
+              <i class="fa fa-dashboard"></i> <span>Nadzorna ploča</span>
+            </a>
+          </li>
+          
+        </li>
+                     
+        <li ><a href="rasporedi.html">
+          <i class="fa fa-calendar"></i> <span>Rasporedi</span>
+            </a>
+        </li>
+
+        <li ><a href="#">
+          <i class="fa fa-pencil-square-o"></i> <span>Evidencija</span></a>
+      </li>
+
+        <li class="header">ADMINISTRACIJA</li>
+
+        <li class="active"><a href="predmeti.html">
+            <i class="fa fa-language"></i> <span>Predmeti</span>
+                    
+          </a>
+        </li>
+
+        <li><a href="#">
+            <i class="fa fa-home"></i> <span>Učionice</span></a>
+        </li>
+
+        <li><a href="#">
+            <i class="fa fa-users"></i> <span>Predavači</span></a>
+        </li>
+
+        <li><a href="#">
+            <i class="fa fa-graduation-cap"></i> <span>Učenici</span></a>
+        </li>
+
+        
+        
+
+
+      </ul>
+    </section>
+    <!-- /.sidebar -->
+  </aside>
+
+  <!-- Za svaku stranicu-->
+
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <h1>
+        Predmeti
+        <small>Popis svih predmeta</small>
+      </h1>
+
+      <button type="button" class="btn btn-lg "><i class="fa fa-plus" ></i> Dodaj novi predmet</button>
+        
+    </section>
+
+     <!-- Main content -->
+     <section class="content">
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="box">
+            
+            <!-- /.box-header -->
+            <div class="box-body">
+              <table id="example2" class="table table-bordered table-hover">
+                
+                <tbody>
+                <tr>
+                  <td>Hrvatski jezik</td>
+                  <td>
+                      <div class="btn-group">
+                          <button type="button" class="btn btn-default "><i class="fa fa-edit" ></i></button>
+                          <button type="button" class="btn btn-default "><i class="fa fa-trash"></i></button>
+                          <button type="button" class="btn btn-success "><i class="fa fa-save"></i></button>
+                      </div>
+                  </td>
+                </tr>
+
+                <tr>
+                    <td>Njemački jezik</td>
+                    <td>
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-default "><i class="fa fa-edit" ></i></button>
+                            <button type="button" class="btn btn-default "><i class="fa fa-trash"></i></button>
+                            <button type="button" class="btn btn-success "><i class="fa fa-save"></i></button>
+                        </div>
+                    </td>
+                  </tr>
+
+                  <tr>
+                      <td>Španjolski jezik</td>
+                      <td>
+                          <div class="btn-group">
+                              <button type="button" class="btn btn-default "><i class="fa fa-edit" ></i></button>
+                              <button type="button" class="btn btn-default "><i class="fa fa-trash"></i></button>
+                              <button type="button" class="btn btn-success "><i class="fa fa-save"></i></button>
+                          </div>
+                      </td>
+                    </tr>
+
+                    <tr>
+                        <td>Engleski jezik</td>
+                        <td>
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-default "><i class="fa fa-edit" ></i></button>
+                                <button type="button" class="btn btn-default "><i class="fa fa-trash"></i></button>
+                                <button type="button" class="btn btn-success "><i class="fa fa-save"></i></button>
+                            </div>
+                        </td>
+                      </tr>
+                
+                </tbody>
+                
+              </table>
+            </div>
+            <!-- /.box-body -->
+          </div>
+          <!-- /.box -->
+          
+          
+
+      </div>
+      <!-- /.tab-pane -->
+    </div>
+  </aside>
+  <!-- /.control-sidebar -->
+  <!-- Add the sidebar's background. This div must be placed
+       immediately after the control sidebar -->
+  <div class="control-sidebar-bg"></div>
+</div>
+
+<footer class="main-footer">
+  <div class="pull-right hidden-xs">
+    <b>Verzija</b> 1.7.0
+  </div>
+  <strong>Copyright &copy; 2018 <a target="_blank" href="https://exploode.com">exploode</a>.</strong> Sva prava pridržana.
+</footer>
+
+<!-- ./wrapper -->
+
+<!-- jQuery 3 -->
+<script src="bower_components/jquery/dist/jquery.min.js"></script>
+<!-- Bootstrap 3.3.7 -->
+<script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<!-- jQuery UI 1.11.4 -->
+<script src="bower_components/jquery-ui/jquery-ui.min.js"></script>
+<!-- Slimscroll -->
+<script src="bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+<!-- FastClick -->
+<script src="bower_components/fastclick/lib/fastclick.js"></script>
+<!-- AdminLTE App -->
+<script src="dist/js/adminlte.min.js"></script>
+<!-- AdminLTE for demo purposes -->
+<script src="dist/js/demo.js"></script>
+<!-- fullCalendar -->
+<script src="bower_components/moment/moment.js"></script>
+<script src="bower_components/fullcalendar/dist/fullcalendar.min.js"></script>
+<!-- Page specific script -->
+<script>
+  $(function () {
+
+    /* initialize the external events
+     -----------------------------------------------------------------*/
+    function init_events(ele) {
+      ele.each(function () {
+
+        // create an Event Object (http://arshaw.com/fullcalendar/docs/event_data/Event_Object/)
+        // it doesn't need to have a start or end
+        var eventObject = {
+          title: $.trim($(this).text()) // use the element's text as the event title
+        }
+
+        // store the Event Object in the DOM element so we can get to it later
+        $(this).data('eventObject', eventObject)
+
+        // make the event draggable using jQuery UI
+        $(this).draggable({
+          zIndex        : 1070,
+          revert        : true, // will cause the event to go back to its
+          revertDuration: 0  //  original position after the drag
+        })
+
+      })
+    }
+
+   
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+
+<div class="content-wrapper" style="min-height: 600px;">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <h1>
+          Učenici
+          <small>Upravljanje učenicima</small>
+        </h1>
+        
+        <ol class="breadcrumb">
+            <li><a [routerLink]="['/predavac/dashboard']"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+            <li class="active">Učenici</li>
+        </ol>
+      </section>
+      
+  
+  
+     <!-- Main content -->
+     <section class="content">
+      <div class="row">
+        <div class="col-xs-12">
+  
+          <app-ucenici-list [role]="'predavac'"></app-ucenici-list>
+          
+        </div>
+      </div>
+    </section>
+    
+  <div class="control-sidebar-bg"></div>
+  
+  

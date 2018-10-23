@@ -1,0 +1,386 @@
+
+<button id="btnAddUcenikhidden" (click)="spremi()" hidden></button>
+<button id="btnResetUcenikhidden" (click)="reset()" hidden></button>
+
+        <div class="nav-tabs-custom">
+          <ul class="nav nav-tabs">
+            <li class="active"><a href="#account" data-toggle="tab">Account</a></li>
+            <li><a href="#personal-info" data-toggle="tab">Osobne informacije</a></li>
+            <li><a href="#about-me" data-toggle="tab">O meni</a></li>
+            <li><a href="#personal-documents" data-toggle="tab">Osobni dokumenti</a></li>
+          </ul>
+          <div class="tab-content">
+
+            <div class="active tab-pane" id="account">
+                <form class="form-horizontal">
+
+                  <div class="row" style="margin-bottom: 20px;">
+                      <div class="col-xs-6 vcenter text-center">
+                          <img class="profile-user-img img-responsive img-circle" style="height: 200px;width: 200px;" [src]="p.ProfileImage.DataUrl" />
+                      </div>
+                      <div class="col-xs-6">
+                      </div>
+                  </div>
+
+                  <div class="row" style="margin-bottom: 20px;">
+                    <div class="col-xs-6 text-center">
+                        <div class="form-group" hidden>
+                            <label for="exampleInputFile">File input</label>
+                            <input #usrImgInput id="exampleInputFile" type="file" accept="image/*" (change)="userImgChange()">
+                        </div>
+                        <button type="button" (click)="usrImgInput.click()" class="btn btn-default btn-lg">
+                          <i class="fa fa-camera"></i>
+                        Promijeni sliku
+                      </button>
+                    </div>
+                  </div>
+
+                  <div [ngClass]="p.RFIDCard == '' ? 'form-group has-error has-feedback' : 'form-group'">
+                    <label for="RFIDCard" class="col-sm-2 control-label">RFID kartice: </label>
+                    <div class="col-sm-10">
+                      <input class="form-control" name="RFIDCard" [(ngModel)]="p.RFIDCard"  placeholder="RFID..."  (mouseup)="$event.preventDefault()" (onfocus)="numbersOnlyInputFocus($event)" (keypress)="numbersOnlyInput($event)" (keyup)="numbersOnlyKeyUp($event)" type="text" maxlength="10">
+                     
+                      <ng-container *ngIf="p.RFIDCard == ''">
+                          <label class="control-label error-label" for="inputError">
+                              <i class="fa fa-times-circle-o"></i> 
+                              Unesite RFID broj kartice!
+                            </label>
+                            <br>
+                      </ng-container>
+
+                      <ng-container *ngIf="IsRFIDCardTaken && p.RFIDCard.length > 9">
+                          <label class="control-label error-label" for="inputError">
+                              <i class="fa fa-times-circle-o"></i> 
+                              RFID broj zauzet!
+                            </label>
+                            <br>
+                      </ng-container>
+
+                      <ng-container *ngIf="(p.RFIDCard == p.RFIDPrivjesak) && p.RFIDCard && p.RFIDCard != ''">
+                          <label class="control-label error-label" for="inputError">
+                              <i class="fa fa-times-circle-o"></i> 
+                              RFID brojevi za karticu i privjesak moraju biti različiti!
+                            </label>
+                            <br>
+                      </ng-container>
+
+                    </div>
+                  </div>
+
+                  <div [ngClass]="p.RFIDPrivjesak == '' || IsRFIDPrivjesakTaken ? 'form-group has-error has-feedback' : 'form-group'">
+                    <label for="RFIDPrivjesak" class="col-sm-2 control-label">RFID privjesak: </label>
+                    <div class="col-sm-10">
+                      <input class="form-control" name="RFIDPrivjesak" [(ngModel)]="p.RFIDPrivjesak"  placeholder="RFID..."  (mouseup)="$event.preventDefault()" (onfocus)="numbersOnlyInputFocus($event)" (keypress)="numbersOnlyInput($event)" (keyup)="numbersOnlyKeyUp($event)" type="text" maxlength="10">
+                      
+                      <ng-container *ngIf="p.RFIDPrivjesak == ''">
+                          <label class="control-label error-label" for="inputError">
+                              <i class="fa fa-times-circle-o"></i> 
+                              Unesite RFID broj privjeska!
+                            </label>
+                            <br>
+                      </ng-container>
+
+                      <ng-container *ngIf="IsRFIDPrivjesakTaken && p.RFIDPrivjesak.length > 9">
+                          <label class="control-label error-label" for="inputError">
+                              <i class="fa fa-times-circle-o"></i> 
+                              RFID broj zauzet!
+                            </label>
+                            <br>
+                      </ng-container>
+
+                      <ng-container *ngIf="(p.RFIDCard == p.RFIDPrivjesak) && p.RFIDPrivjesak && p.RFIDPrivjesak != ''">
+                          <label class="control-label error-label" for="inputError">
+                              <i class="fa fa-times-circle-o"></i> 
+                              RFID brojevi za karticu i privjesak moraju biti različiti!
+                            </label>
+                            <br>
+                      </ng-container>
+                    </div>
+                  </div>
+
+                  <div [ngClass]="p.Name == '' ? 'form-group has-error has-feedback' : 'form-group'">
+                    <label for="ime" class="col-sm-2 control-label">Ime: </label>
+                    <div class="col-sm-10">
+                      <input class="form-control" name="ime" [(ngModel)]="p.Name"  placeholder="Ime..." type="text">
+                      
+                      <ng-container *ngIf="p.Name == ''">
+                          <label class="control-label error-label" for="inputError">
+                              <i class="fa fa-times-circle-o"></i> 
+                              Unesite ime!
+                            </label>
+                            <br>
+                      </ng-container>
+                    </div>
+                  </div>
+
+                  <div [ngClass]="p.LastName == '' ? 'form-group has-error has-feedback' : 'form-group'">
+                    <label for="prezime" class="col-sm-2 control-label">Prezime: </label>
+                    <div class="col-sm-10">
+                      <input class="form-control" name="prezime" [(ngModel)]="p.LastName"  placeholder="Prezime..." type="text">
+
+                      <ng-container *ngIf="p.LastName == ''">
+                          <label class="control-label error-label" for="inputError">
+                              <i class="fa fa-times-circle-o"></i> 
+                              Unesite prezime!
+                            </label>
+                            <br>
+                      </ng-container>
+                    </div>
+                  </div>
+
+                  <div [ngClass]="p.Username == '' || IsUsernameTaken ? 'form-group has-error has-feedback' : 'form-group'">
+                    <label for="inputName" class="col-sm-2 control-label">Korisničko ime: </label>
+                    <div class="col-sm-10">
+                      <input class="form-control" name="username" [(ngModel)]="p.Username" (input)="usernameChange()"  placeholder="Korisničko ime..." type="text">
+
+                      <ng-container *ngIf="p.Username == ''">
+                          <label class="control-label error-label" for="inputError">
+                              <i class="fa fa-times-circle-o"></i> 
+                              Unesite korisničko ime!
+                            </label>
+                            <br>
+                      </ng-container>
+
+                      <ng-container *ngIf="IsUsernameTaken && p.Username != ''">
+                          <label class="control-label error-label" for="inputError">
+                              <i class="fa fa-times-circle-o"></i> 
+                              Korisničko ime je zauzeto!
+                            </label>
+                            <br>
+                      </ng-container>
+                    </div>
+                  </div>
+
+
+                  <div [ngClass]="(p.Email == '' || (p.Email && !isValidEmail()) || (p.Email && IsEmailTaken)) ? 'form-group has-error has-feedback' : 'form-group'">
+                    <label for="inputEmail" class="col-sm-2 control-label">E-mail:</label>
+                    <div class="col-sm-10">
+                      <input class="form-control" name="email" [(ngModel)]="p.Email" (input)="emailChange()" placeholder="E-mail..." type="email">
+                      
+                      <ng-container *ngIf="p.Email == ''">
+                          <label class="control-label error-label" for="inputError">
+                              <i class="fa fa-times-circle-o"></i> 
+                              Unesite e-mail adresu!
+                            </label>
+                            <br>
+                      </ng-container>
+                      
+                      <ng-container *ngIf="p.Email && !isValidEmail()">
+                          <label class="control-label error-label" for="inputError">
+                              <i class="fa fa-times-circle-o"></i> 
+                              E-mail adresa nije validna!
+                            </label>
+                            <br>
+                      </ng-container>
+
+                      <ng-container *ngIf="p.Email && IsEmailTaken">
+                          <label class="control-label error-label" for="inputError">
+                              <i class="fa fa-times-circle-o"></i> 
+                              E-mail adresa je zauzeta!
+                            </label>
+                            <br>
+                      </ng-container>
+
+                    </div>
+                  </div>
+
+                  <div [ngClass]="p.Password == '' || (p.Password != '' && (p.Password != p.RePassword)) ? 'form-group has-error has-feedback' : 'form-group'">
+                    <label for="inputExperience" class="col-sm-2 control-label">Lozinka:</label>
+                    <div class="col-sm-10">
+                      <input class="form-control" name="password" [(ngModel)]="p.Password" placeholder="Lozinka..." type="password">
+
+                      <ng-container *ngIf="p.Password == ''">
+                          <label class="control-label error-label" for="inputError">
+                              <i class="fa fa-times-circle-o"></i> 
+                              Unesite lozinku!
+                            </label>
+                            <br>
+                      </ng-container>
+                      
+                      <ng-container *ngIf="(p.Password != '' && (p.Password != p.RePassword))">
+                          <label class="control-label error-label" for="inputError">
+                              <i class="fa fa-times-circle-o"></i> 
+                              Lozinke se ne podudaraju!
+                            </label>
+                            <br>
+                      </ng-container>
+                      
+                    </div>
+                  </div>
+
+                  <div [ngClass]="p.RePassword == '' || (p.RePassword != '' && (p.RePassword != p.Password))  ? 'form-group has-error has-feedback' : 'form-group'">
+                    <label for="inputSkills" class="col-sm-2 control-label">Ponovi lozinku:</label>
+                    <div class="col-sm-10">
+                      <input class="form-control" name="rePassword" [(ngModel)]="p.RePassword" placeholder="Ponovi lozinku..." type="password">
+                      
+                      <ng-container *ngIf="p.RePassword == ''">
+                          <label class="control-label error-label" for="inputError">
+                              <i class="fa fa-times-circle-o"></i> 
+                              Ponovite lozinku!
+                            </label>
+                            <br>
+                      </ng-container>
+
+                      <ng-container *ngIf="(p.RePassword != '' && (p.RePassword != p.Password))">
+                          <label class="control-label error-label" for="inputError">
+                              <i class="fa fa-times-circle-o"></i> 
+                              Lozinke se ne podudaraju!
+                            </label>
+                            <br>
+                      </ng-container>
+                    </div>
+                  </div>
+                  
+                </form>
+            </div>
+
+            <div class="tab-pane" id="personal-info">
+              
+                <form class="form-horizontal">
+                    <div  [ngClass]="p.Adresa == '' ? 'form-group has-error has-feedback' : 'form-group'">
+                        <label for="adresa" class="col-sm-2 control-label">Adresa:</label>
+                        <div class="col-sm-10">
+                          <input class="form-control" name="adresa" [(ngModel)]="p.Adresa" placeholder="Adresa..." type="text">
+                          
+                          <ng-container *ngIf="p.Adresa == ''">
+                              <label class="control-label error-label" for="inputError">
+                                  <i class="fa fa-times-circle-o"></i> 
+                                  Unesite adresu!
+                                </label>
+                                <br>
+                          </ng-container>
+                          
+                        </div>
+                      </div>
+
+                                                           
+                      <div [ngClass]="p.DatumRodjenja == '' ? 'form-group has-error has-feedback' : 'form-group'">
+                        <label for="datumRodjenja" class="col-sm-2 control-label">Datum rođenja:</label>
+                        <div class="col-sm-10">
+                          <input class="form-control" [owlDateTime]="pocetak" [owlDateTimeTrigger]="pocetak" name="pocetak" [(ngModel)]="p.DatumRodjenja"  placeholder="01. 01. 2018.">
+                          <owl-date-time [pickerType]="'calendar'" #pocetak></owl-date-time>
+                            
+                            <ng-container *ngIf="p.DatumRodjenja == ''">
+                                <label class="control-label error-label" for="inputError">
+                                    <i class="fa fa-times-circle-o"></i> 
+                                    Unesite datum rođenja!
+                                  </label>
+                                  <br>
+                            </ng-container>
+                        </div>
+                      </div>
+
+                    <div [ngClass]="p.MjestoRodjenja == '' ? 'form-group has-error has-feedback' : 'form-group'">
+                      <label for="mjestoRodjenja" class="col-sm-2 control-label">Mjesto rođenja: </label>
+                      <div class="col-sm-10">
+                        <input class="form-control" name="mjestoRodjenja" [(ngModel)]="p.MjestoRodjenja"  placeholder="Mjesto rođenja..." type="text">
+                        
+                        <ng-container *ngIf="p.MjestoRodjenja == ''">
+                            <label class="control-label error-label" for="inputError">
+                                <i class="fa fa-times-circle-o"></i> 
+                                Unesite mjesto rođenja!
+                              </label>
+                              <br>
+                        </ng-container>
+                      </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label for="phoneNr" class="col-sm-2 control-label">Broj mobitela: </label>
+                        <div class="col-sm-10">
+                          <input class="form-control" name="phoneNr" [(ngModel)]="p.PhoneNr" placeholder="+387 63 111 222" type="text">
+                        </div>
+                    </div>
+
+
+                    
+                    <div class="form-group">
+                        <label for="spol" class="col-sm-2 control-label">Spol:</label>
+                        <div class="col-sm-10" style="margin-top: 7px;">
+                          <label style="margin-right: 10px;"><input type="radio" name="spol" [(ngModel)]="p.Spol" value="M" />&nbsp;Muško</label>
+                          <label><input type="radio" name="spol" [(ngModel)]="p.Spol" value="Ž" />&nbsp;Žensko</label>
+                        </div>
+                    </div>
+                      
+                  </form>
+            </div>
+            
+            <div class="tab-pane" id="about-me">
+              <form class="form-horizontal">
+                
+                  <div class="form-group">
+                      <label for="edukacija" class="col-sm-2 control-label">Edukacija:</label>
+                      <div class="col-sm-10">
+                          <input type="text" class="form-control" name="edukacija" [(ngModel)]="p.Edukacija" rows="6" placeholder="Edukacija..." />
+                      </div>
+                  </div>
+                  <hr>
+
+                <!-- 
+                  <div class="form-group">
+                      <label for="jobTitle" class="col-sm-2 control-label">Naslov posla:</label>
+                      <div class="col-sm-10">
+                          <input type="text" class="form-control" name="jobTitle" [(ngModel)]="p.JobTitle" rows="6" placeholder="Naslov posla..." />
+                      </div>
+                  </div>
+                  <hr>
+                -->
+                                  
+                  <div class="form-group">
+                      <label for="about" class="col-sm-2 control-label">O meni:</label>
+                      <div class="col-sm-10">
+                          <textarea class="form-control" name="about" [(ngModel)]="p.About" rows="6" placeholder="Unesite text..."></textarea>
+                      </div>
+                  </div>
+                  <hr>
+                  
+                    
+                  <div class="form-group">
+                      <label for="additionalInfo" class="col-sm-2 control-label">Dodatne informacije:</label>
+                      <div class="col-sm-10">
+                          <textarea class="form-control" name="additionalInfo" [(ngModel)]="p.AdditionalInfo" rows="3" placeholder="Unesite text..."></textarea>
+                      </div>
+                  </div>
+
+              </form>
+            </div>
+
+            <div class="tab-pane" id="personal-documents">
+                <div class="row" *ngFor="let docRow of subArray(PersonalDocs, 2)">
+                    <div class="col-xs-6" *ngFor="let doc of docRow">
+                        <div class="info-box">
+                            <div class="box-tools pull-right">
+                                <button type="button" (click)="removeDoc(doc)" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                              </div>
+                          <span class="info-box-icon bg-aqua"><i class="fa fa-files-o"></i></span>
+              
+                          <div class="info-box-content">
+                            <span class="info-box-text"><u>{{doc.FileName}}</u></span>
+                            <a href="#" style="margin-right: 20px;">Preuzmi</a>
+                            <a href="#">Preview</a>
+                          </div>
+                        </div>
+                      </div>
+                </div>
+
+
+                <div class="row">
+                    <div class="col-xs-6">
+                        <div class="form-group" hidden>
+                            <label for="exampleInputFile">File input</label>
+                            <input #usrDocInput id="exampleInputFileDoc" type="file" (change)="personalDocAdd()" multiple>
+                        </div>
+                        <button type="button" (click)="usrDocInput.click()" class="btn btn-default btn-lg">
+                          <i class="fa fa-plus"></i>
+                        Dodaj dokument
+                      </button>
+                    </div>
+                </div>
+            </div>
+            
+
+            <!-- /.tab-pane -->
+          </div>
+          <!-- /.tab-content -->
+        </div>

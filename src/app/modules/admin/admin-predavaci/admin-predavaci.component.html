@@ -1,0 +1,32 @@
+
+<div class="content-wrapper" style="min-height: 600px;">
+  <!-- Content Header (Page header) -->
+  <section class="content-header">
+      <h1>
+        Predavači
+        <small>Upravljanje predavačima</small>
+      </h1>
+      
+      <ol class="breadcrumb">
+          <li><a [routerLink]="['/admin/dashboard']"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+          <li class="active">Predavači</li>
+      </ol>
+    </section>
+    
+
+
+   <!-- Main content -->
+   <section class="content">
+    <div class="row">
+      <div class="col-xs-12">
+            
+        <app-predavaci-list [loggedUserPrivileges]="'admin'"></app-predavaci-list>
+        
+
+    </div>
+    
+  </div>
+  </section>
+  
+<div class="control-sidebar-bg"></div>
+

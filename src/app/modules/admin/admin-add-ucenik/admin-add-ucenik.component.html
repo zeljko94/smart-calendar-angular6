@@ -1,0 +1,39 @@
+
+<div class="content-wrapper" style="min-height: 600px;">
+  <!-- Content Header (Page header) -->
+  <section class="content-header">
+      <h1>
+        Dodaj učenika
+        <!--<small>Dodavanje predavača</small>-->
+        
+        <button class="btn btn-success" (click)="spremi()" style="margin-right: 10px;" type="button"><i class="fa fa-save"></i>&nbsp; Spremi predavača</button>
+        <button class="btn btn-danger" (click)="reset()" type="button"><i class="fa fa-undo"></i>&nbsp; Reset</button>
+      </h1>
+      
+      <ol class="breadcrumb">
+          <li><a [routerLink]="['/admin/dashboard']"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+          <li><a [routerLink]="['/admin/predavaci']"><i class="fa fa-users"></i> Učenici</a></li>
+          <li class="active">Dodaj učenika</li>
+      </ol>
+
+
+    </section>
+    
+
+
+   <!-- Main content -->
+   <section class="content">
+    <div class="row">
+      <div class="col-xs-12">
+
+        <app-add-ucenik [role]="'admin'"></app-add-ucenik>
+
+    </div>
+    <!-- /.tab-pane -->
+  </div>
+  </section>
+<!-- /.control-sidebar -->
+<!-- Add the sidebar's background. This div must be placed
+     immediately after the control sidebar -->
+<div class="control-sidebar-bg"></div>
+

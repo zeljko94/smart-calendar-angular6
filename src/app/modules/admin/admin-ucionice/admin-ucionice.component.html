@@ -1,0 +1,37 @@
+
+<div class="content-wrapper" style="min-height: 600px;">
+  <!-- Content Header (Page header) -->
+  <section class="content-header">
+      <h1>
+        Učionice
+        <small>Upravljanje učionicama</small>
+      </h1>
+      
+      <ol class="breadcrumb">
+          <li><a [routerLink]="['/admin/dashboard']"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+          <li class="active">Učionice</li>
+      </ol>
+    </section>
+    
+
+
+   <!-- Main content -->
+   <section class="content">
+    <div class="row">
+      <div class="col-xs-12">
+
+
+        <app-ucionice-list [loggedUserPrivileges]="'admin'"></app-ucionice-list>
+
+
+        
+        
+
+    </div>
+    <!-- /.tab-pane -->
+  </div>
+<!-- /.control-sidebar -->
+<!-- Add the sidebar's background. This div must be placed
+     immediately after the control sidebar -->
+<div class="control-sidebar-bg"></div>
+

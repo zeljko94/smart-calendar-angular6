@@ -1,0 +1,74 @@
+
+              
+<div class="content-wrapper" style="min-height: 600px;">
+  <!-- Content Header (Page header) -->
+  <section class="content-header">
+      <h1>
+        Forum
+        <small>Dodavanje foruma</small>
+      </h1>
+      
+      <ol class="breadcrumb">
+          <li><a [routerLink]="['/admin/dashboard']"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+          <li class="active">Forum</li>
+      </ol>
+    </section>
+    
+
+
+   <!-- Main content -->
+   <section class="content">
+    <div class="row">
+      <div class="col-xs-12">
+
+
+              <!-- ADD FORM -->
+              <div class="row">
+                <div class="col-xs-12">
+                  <div class="box" *ngIf="mode != ''">
+                      <div class="box-header with-border">
+                        <h1 class="box-title"><b>Dodaj forum</b></h1>
+                      </div>
+                      <form class="form-horizontal">
+
+                        <div class="box-body">
+                          <div [ngClass]="forum.Naslov == '' ? 'form-group has-error has-feedback' : 'form-group'">
+                            <label for="naslov" class="col-sm-2 control-label">Naslov:</label>
+                            <div class="col-sm-10">
+                              <input [(ngModel)]="forum.Naslov" class="form-control" name="Naslov" placeholder="Naslov foruma..." type="text">
+                              <p *ngIf="forum.Naslov == ''" style="color: red;">Unesite naslov foruma!</p>
+                            </div>
+                          </div>
+
+                                                               
+                          <div class="form-group">
+                            <label for="opis" class="col-sm-2 control-label">Sudionici:</label>
+                            <div class="col-sm-10">
+                                <dual-list [source]="forum.source" [(destination)]="forum.destination" [format]="format" [display]="dualListDisplay" [key]="'ID'" (destinationChange)="destinationChange($event)"></dual-list>
+                            </div>
+                        </div>
+
+                        </div>
+                        <!-- /.box-body -->
+                        <div class="box-footer">
+                          <button type="button" (click)="spremi()" class="btn btn-success btn-lg" style="margin-right: 10px;"><i class="fa fa-save"></i>&nbsp; Spremi</button>
+                          <button type="button" (click)="forum={}" class="btn btn-danger btn-lg"><i class="fa fa-undo"></i>&nbsp; Reset</button>
+                        </div>
+                        <!-- /.box-footer -->
+                      </form>
+                    </div>
+
+                </div>
+              </div>
+              <!-- ADD/EDIT FORM END -->
+
+        
+        
+
+    </div>
+    <!-- /.tab-pane -->
+  </div>
+<!-- /.control-sidebar -->
+<!-- Add the sidebar's background. This div must be placed
+     immediately after the control sidebar -->
+<div class="control-sidebar-bg"></div>

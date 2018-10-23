@@ -1,0 +1,83 @@
+
+
+            
+                <div class="row">
+                  <div class="col-xs-2">
+                      <button type="button" id="addPredavacBtn" class="btn btn-default btn-lg " [routerLink]="['/admin/add-predavac']"><i class="fa fa-plus" ></i> Dodaj predavača</button>
+                  </div>
+
+                  <div class="col-xs-2" style="margin-top: 6px;">
+                    <div class="form-group">
+                    <select class="form-control" name="searchBy" [(ngModel)]="searchBy" (change)="searchByChange()">
+                        <option value="1">RFID</option>
+                        <option value="2">Ime i prezime</option>
+                        <option value="3">Vještine</option>
+                      </select>
+                    </div>
+                  </div>
+                  
+                <div class="col-xs-8">
+                    <div class="input-group input-group-lg">
+                        <input id="search" #searchRef [(ngModel)]="search" (keyup)="applyFilters()" class="form-control" placeholder="Search..." type="text">
+                        <span class="input-group-addon"><i class="fa fa-search search-icon"></i></span>
+                    </div>
+                </div>
+              </div>
+
+
+              <br>
+              <!--
+              <div class="row">
+                <div class="col-xs-2 vcenter" style="padding-left: 35px;">
+                    <label style="font-size: 20px;"><input style="width: 20px;height: 20px;" [(ngModel)]="cbService.checkAll" (change)="cbService.checkAllOnChange()" type="checkbox" name="data-check-all">&nbsp;&nbsp;Označi sve</label>
+                </div>
+                <div class="col-xs-10">
+                  <button class="btn btn-danger btn-lg" [disabled]="cbService.numOfChecked() <= 0" (click)="brisiOznacene()"><i class="fa fa-trash"></i>&nbsp;Briši označene</button>
+                </div>
+              </div>
+              <br>
+              -->
+            
+
+
+            <div class="box">
+                <div class="box-header with-border">
+                  <h1 class="box-title" style="font-size: 25px;">Predavači</h1>  
+                </div>
+                
+              <div class="box-body">
+                  <h3 *ngIf="predavaci.length <= 0" class="text-warning">Nema predavača za prikaz.</h3>
+                  <div class="row predavaci-row equal" *ngFor="let p of predavaci; let i = index" (click)="rowClick(p)">
+                    <div class="col-xs-1 vcenter text-center" style="width: 5%;">
+                      <!--<input style="width: 20px;height: 20px;" type="checkbox" value="{{p.ID}}" name="data-check" (click)="$event.stopPropagation()" (change)="cbService.checkOnChange()" />-->
+                    </div>
+                    <div class="col-xs-1 text-center vcenter" style="font-size: 36px; font-weight: bold;">{{i+1}}. <!--{{((this.paginator.ps.currentPage-1) * this.paginator.ps.pageSize) + (i+1)}}.--></div>
+                    <div class="col-xs-3 vcenter">
+                        <img class="profile-user-img img-responsive img-circle" style="height: 200px;width: 200px;" [src]="p.ProfileImage.DataUrl">
+                    </div>
+                    <div class="col-xs-6">
+                      <h1 class="predavaci-row-name text-center">{{p.Name}} {{p.LastName}}</h1>
+                      <hr class="divider">
+                      <strong><i class="fa fa-book margin-r-5"></i> Edukacija</strong><p class="text-muted"> {{p.Edukacija}} </p>
+                      <hr class="divider">
+                      <strong><i class="fa fa-map-marker margin-r-5"></i> Adresa</strong><p class="text-muted">{{p.Adresa}}</p>
+                      <hr class="divider">
+                      <strong><i class="fa fa-pencil margin-r-5"></i> Skills</strong>
+                      <p>
+                        <span *ngFor="let skill of p.Skills" [ngClass]="skill.Icon"></span>
+                      </p>
+                    </div>
+                    
+                    <div *ngIf="loggedUserPrivileges == 'admin'" class="col-xs-1 vcenter">
+                        <div class="btn-group">
+                            <button type="button" (click)="$event.stopPropagation();brisi(p.ID)" class="btn btn-danger btn-lg"><i class="fa fa-trash"></i>&nbsp; Briši</button>
+                        </div>
+                    </div>
+                  </div>
+                  
+                </div>
+                
+              <div class="box-footer">
+                <!--<app-pagination #paginator></app-pagination>-->
+              </div>
+            </div>

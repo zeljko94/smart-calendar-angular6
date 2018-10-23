@@ -1,0 +1,89 @@
+
+<div class="content-wrapper">
+  <!-- Content Header (Page header) -->
+  <section class="content-header">
+    <h1>Moji tečaji
+      <small>Pregled mojih tečaja</small>
+    </h1>
+
+    <ol class="breadcrumb">
+        <li><a [routerLink]="['/ucenik/dashboard']"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+        <li class="active">Moji tečaji/Instrukcije</li>
+    </ol>
+  </section>
+
+
+   <!-- Main content -->
+   <section class="content">
+    <div class="row">
+      <div class="col-xs-12">
+
+        <div class="row">
+          <div class="col-xs-12">
+              <div class="input-group input-group-lg">
+                  <input [(ngModel)]="search" (keyup)="applyFilters()" class="form-control" placeholder="Search..." type="text">
+                  <span class="input-group-addon"><i class="fa fa-search search-icon"></i></span>
+              </div>
+          </div>
+        </div>
+        <br>
+
+        <div class="box">
+            <div class="box-header with-border">
+                <h1 class="box-title" style="font-size: 25px;">Tečaji</h1>  
+              </div>
+          <!-- /.box-header -->
+          <div class="box-body">
+              <table id="tecajeviTable" class="table table-bordered table-hover table-striped">
+                <tbody>
+                  <tr style="font-size: 20px;" class="text-center">
+                      <th>#</th>
+                      <th>Naziv</th>
+                      <th>Opis</th>
+                      <th>Predavač</th>
+                      <th>Jezik</th>
+                      <th>Razina</th>
+                      <th>Tip nastave</th>
+                      <th style="width: 12%;"></th>
+                      <!--<th class="text-center"><input type="checkbox" [(ngModel)]="checkAll" (change)="checkAllOnChange()" name="check-all" /></th>-->
+                  </tr>
+  
+                  <tr *ngFor="let rn of tecajevi; let i = index" style="font-size: 18px;">
+                    <!--<td class="text-center" style="width: 3%;">{{((this.paginator.ps.currentPage-1) * this.paginator.ps.pageSize) + (i+1)}}.</td>-->
+                    <td class="text-center" style="width: 3%;">{{i+1}}.</td>
+                    <td>{{rn.Naziv}}</td>
+                    <td>{{rn.Opis}}</td>
+                    <td>{{rn.Predavac.Name}} {{rn.Predavac.LastName}}</td>
+                    <td><span [ngClass]="rn.Skill.Icon"></span>{{rn.Skill.Name}}</td>
+                    <td>{{rn.NastavaRazina.Naziv}}</td>
+                    <td>{{rn.TipNastave.Naziv}}</td>
+                    <td style="width: 12%;" class="text-center">
+                        <div class="btn-group">
+                            <button (click)="$event.stopPropagation();detalji(rn.ID)" type="button" class="btn btn-primary btn-lg"><i class="fa fa-info-circle"></i>&nbsp; Detalji</button>
+                        </div>
+                    </td>
+                    <!--<td  class="text-center"><input type="checkbox" [value]="rn.ID" (change)="$event.stopPropagation()" name="data-checkbox" /></td>-->
+                  </tr>
+                
+                </tbody>
+                
+              </table>
+          </div>
+          <!-- /.box-body -->
+
+          <div class="box-footer">
+              <!--<app-pagination #paginator></app-pagination>-->
+          </div>
+        </div>
+        <!-- /.box -->
+        
+        
+
+    </div>
+    <!-- /.tab-pane -->
+  </div>
+<!-- /.control-sidebar -->
+<!-- Add the sidebar's background. This div must be placed
+     immediately after the control sidebar -->
+<div class="control-sidebar-bg"></div>
+

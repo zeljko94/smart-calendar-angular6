@@ -1,0 +1,21 @@
+<div class="content-wrapper">
+    <section class="content-header">
+        <h1>
+          <span class="margin-r-5">User profile</span>
+          <button class="btn btn-success margin-r-5" (click)="spremi()"><i class="fa fa-save"></i>&nbsp;&nbsp;Spremi izmjene</button>
+          <button class="btn btn-danger margin-r-5" (click)="reset()"><i class="fa fa-undo"></i>&nbsp;&nbsp;Reset</button>
+        </h1>
+        <ol class="breadcrumb">
+          <li><a [routerLink]="['/predavac/dashboard']"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+          <li><a [routerLink]="['/predavac/ucenici']"><i class="fa fa-users"></i> Učenici</a></li>
+          <li class="active">Details</li>
+        </ol>
+      </section>
+  
+  
+  
+  
+      <section class="content">
+          <app-ucenik-details *ngIf="isLoaded" [id]="id"></app-ucenik-details>
+      </section>
+  </div>

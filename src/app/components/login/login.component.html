@@ -1,0 +1,54 @@
+
+<body class="hold-transition login-page">
+  <div class="login-box">
+    <div class="login-logo">
+      <a routerLink=''><b>Admin</b>LTE</a>
+    </div>
+    <!-- /.login-logo -->
+    <div class="login-box-body">
+      <p class="login-box-msg">Sign in to start your session</p>
+  
+        <div [ngClass]="email !='' ?'form-group has-feedback': 'form-group has-error has-feedback'">
+          <input type="email" class="form-control" placeholder="E-mail" [(ngModel)]="email">
+          <p *ngIf="!(email != '')"class="text-red">Unesite email!</p>
+          <p *ngIf="isEmailTaken && email != ''"class="text-red">Zauzet e-mail!</p>
+          <!--<span class="glyphicon glyphicon-envelope form-control-feedback"></span>-->
+        </div>
+        <div [ngClass]="password !='' ?'form-group has-feedback': 'form-group has-error has-feedback'">
+          <input type="password" class="form-control" placeholder="Password" [(ngModel)]="password">
+          <!--<span class="glyphicon glyphicon-lock form-control-feedback"></span>-->
+          <p *ngIf="!(password != '')"class="text-red">Unesite password!</p>
+        </div>
+        <div class="row">
+          <div class="col-xs-8">
+            <div class="checkbox icheck">
+              <label>
+                <input type="checkbox"> Remember Me
+              </label>
+            </div>
+          </div>
+          <!-- /.col -->
+          <div class="col-xs-4">
+            <button type="button" (click)="login()" class="btn btn-primary btn-block btn-flat">Sign In</button>
+          </div>
+          <!-- /.col -->
+        </div>
+  
+      <div class="social-auth-links text-center">
+        <p>- OR -</p>
+        <button (click)="facebookLogin()" class="btn btn-block btn-social btn-facebook btn-flat"><i class="fa fa-facebook"></i> Sign in using
+          Facebook</button>
+        <button  (click)="googleLogin()" class="btn btn-block btn-social btn-google btn-flat"><i class="fa fa-google-plus"></i> Sign in using
+          Google+</button>
+      </div>
+      <!-- /.social-auth-links -->
+  
+      <a [routerLink]="">I forgot my password</a><br>
+      <!--<a href="register.html" class="text-center">Become a member</a>-->
+  
+    </div>
+    <!-- /.login-box-body -->
+  </div>
+  <!-- /.login-box -->
+  
+  

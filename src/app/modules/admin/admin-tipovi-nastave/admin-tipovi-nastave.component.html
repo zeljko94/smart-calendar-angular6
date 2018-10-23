@@ -1,0 +1,30 @@
+
+<div class="content-wrapper">
+  <!-- Content Header (Page header) -->
+  <section class="content-header">
+    <h1>Tipovi nastave
+      <small>Upravljanje tipovima nastave</small>
+    </h1>
+
+    <ol class="breadcrumb">
+        <li><a [routerLink]="['/admin/dashboard']"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+        <li class="active">Tipovi nastave</li>
+    </ol>
+  </section>
+
+
+   <!-- Main content -->
+   <section class="content">
+    <div class="row">
+      <div class="col-xs-12">
+        
+        <app-tipovi-nastave-list [loggedUserPrivileges]="'admin'"></app-tipovi-nastave-list>
+
+    </div>
+    <!-- /.tab-pane -->
+  </div>
+<!-- /.control-sidebar -->
+<!-- Add the sidebar's background. This div must be placed
+     immediately after the control sidebar -->
+<div class="control-sidebar-bg"></div>
+

@@ -1,0 +1,202 @@
+
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <h1>Tečajevi
+        <small>Upravljanje tečajevima</small>
+      </h1>
+  
+      <ol class="breadcrumb">
+          <li><a [routerLink]="['/admin/dashboard']"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+          <li class="active">Tečajevi</li>
+      </ol>
+    </section>
+  
+  
+     <!-- Main content -->
+     <section class="content">
+      <div class="row">
+        <div class="col-xs-12">
+
+              <!-- ADD FORM -->
+              <div class="row">
+                  <div class="col-xs-12">
+                    <div class="box" *ngIf="mode != ''">
+                        <div class="box-header with-border">
+                          <h1 class="box-title" *ngIf="mode == 'Add'"><b>Dodaj tečaj</b></h1>
+                          <h1 class="box-title" *ngIf="mode == 'Update'"><b>Izmjeni tečaj</b></h1>
+  
+                          <div class="box-tools pull-right">
+                              <button type="button" (click)="changeMode('', rn)" class="btn btn-box-tool"><i class="fa fa-times"></i></button>
+                          </div>
+                        </div>
+                        <form class="form-horizontal">
+  
+                          <div class="box-body text-left">
+                            <div [ngClass]="object.Naziv == '' ? 'form-group has-error has-feedback' : 'form-group'">
+                              <label for="naziv" class="col-sm-2 control-label">Naziv:</label>
+                              <div class="col-sm-10">
+                                <input [(ngModel)]="object.Naziv" class="form-control" name="Naziv" placeholder="Naziv tečaja..." type="text">
+                                
+                                
+                                <ng-container *ngIf="object.Naziv == ''">
+                                    <label class="control-label error-label" for="inputError">
+                                        <i class="fa fa-times-circle-o"></i> 
+                                        Unesite naziv tečaja!
+                                      </label>
+                                      <br>
+                                </ng-container>
+                              </div>
+                            </div>
+  
+                            <div [ngClass]="object.Opis == '' ? 'form-group has-error has-feedback' : 'form-group'">
+                              <label for="opis" class="col-sm-2 control-label">Opis:</label>
+                              <div class="col-sm-10">
+                                <input [(ngModel)]="object.Opis" class="form-control" name="Opis" placeholder="Opis tečaja..." type="text">
+                              </div>
+                            </div>
+
+                            
+                            
+                            <div class="form-group">
+                                <label for="opis" class="col-sm-2 control-label">Jezik:</label>
+                                <div class="col-sm-3">
+                                    <select class="form-control" name="SkillID" [(ngModel)]="object.SkillID" (change)="jezikChange()">
+                                        <option value="-1">Odaberite jezik...</option>
+                                        <option *ngFor="let j of jezici" value="{{j.ID}}">{{j.Name}}</option>
+                                    </select>
+                                </div>
+                            </div>
+                            
+                                                 
+                            <div class="form-group">
+                                <label for="opis" class="col-sm-2 control-label">Predavač:</label>
+                                <div class="col-sm-3">
+                                    <select class="form-control" name="PredavacID" [(ngModel)]="object.PredavacID" [disabled]="!object.SkillID || predavaci.length <= 0">
+                                        <option value="-1">Odaberite predavača...</option>
+                                        <option *ngFor="let p of predavaci" value="{{p.ID}}">{{p.Name}} {{p.LastName}}</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                                                 
+                            <div class="form-group">
+                                <label for="opis" class="col-sm-2 control-label">Razina:</label>
+                                <div class="col-sm-3">
+                                    <select class="form-control" name="NastavaRazinaID" [(ngModel)]="object.NastavaRazinaID">
+                                        <option value="-1">Odaberite  razinu...</option>
+                                        <option *ngFor="let r of razine" value="{{r.ID}}">{{r.Naziv}}</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="opis" class="col-sm-2 control-label">Tip nastave:</label>
+                                <div class="col-sm-3">
+                                    <select class="form-control" name="TipNastaveID" [(ngModel)]="object.TipNastaveID">
+                                        <option value="-1">Odaberite tip nastave...</option>
+                                        <option *ngFor="let tn of tipoviNastave" value="{{tn.ID}}">{{tn.Naziv}}</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                                                                       
+                            <div class="form-group">
+                                <label for="opis" class="col-sm-2 control-label">Učenici:</label>
+                                <div class="col-sm-10">
+                                    <dual-list [source]="object.source" [(destination)]="object.destination" [format]="format" [display]="dualListDisplay" [key]="'ID'" (destinationChange)="destinationChange($event)"></dual-list>
+                                </div>
+                            </div>
+                          </div>
+                          <!-- /.box-body -->
+                          <div class="box-footer">
+                            <button type="button" (click)="spremi()" class="btn btn-success btn-lg" style="margin-right: 10px;"><i class="fa fa-save"></i>&nbsp; Spremi</button>
+                            <button type="button" (click)="object={}" class="btn btn-danger btn-lg"><i class="fa fa-undo"></i>&nbsp; Reset</button>
+                          </div>
+                          <!-- /.box-footer -->
+                        </form>
+                      </div>
+  
+                  </div>
+                </div>
+                <!-- ADD/EDIT FORM END -->
+  
+                <div class="row">
+                  <div class="col-xs-2">
+                    <button type="button" class="btn btn-default btn-lg " (click)="changeMode('Add', rn)"><i class="fa fa-plus" ></i> Dodaj tečaj</button>
+                  </div>
+                  <div class="col-xs-10">
+                      <div class="input-group input-group-lg">
+                          <input [(ngModel)]="search" (keyup)="applyFilters()" class="form-control" placeholder="Search..." type="text">
+                          <span class="input-group-addon"><i class="fa fa-search search-icon"></i></span>
+                      </div>
+                  </div>
+                </div>
+                <br>
+  
+          <div class="box">
+              <div class="box-header with-border">
+                  <h1 class="box-title" style="font-size: 25px;">Tečajevi</h1>  
+                </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+              <table id="tecajeviTable" class="table table-bordered table-hover table-striped">
+                <tbody>
+                  <tr style="font-size: 20px;" class="text-center">
+                      <th>#</th>
+                      <th>Naziv</th>
+                      <th>Opis</th>
+                      <th>Predavač</th>
+                      <th>Jezik</th>
+                      <th>Razina</th>
+                      <th>Tip nastave</th>
+                      <th style="width: 12%;"></th>
+                      <th style="width: 12%;"></th>
+                      <!--<th class="text-center"><input type="checkbox" [(ngModel)]="checkAll" (change)="checkAllOnChange()" name="check-all" /></th>-->
+                  </tr>
+  
+                  <tr *ngFor="let rn of tecajevi; let i = index" style="font-size: 18px;" (click)="changeMode('Update',rn)">
+                    <!--<td class="text-center" style="width: 3%;">{{((this.paginator.ps.currentPage-1) * this.paginator.ps.pageSize) + (i+1)}}.</td>-->
+                    <td class="text-center" style="width: 3%;">{{i+1}}.</td>
+                    <td>{{rn.Naziv}}</td>
+                    <td>{{rn.Opis}}</td>
+                    <td>{{rn.Predavac.Name}} {{rn.Predavac.LastName}}</td>
+                    <td><span [ngClass]="rn.Skill.Icon"></span>{{rn.Skill.Name}}</td>
+                    <td>{{rn.NastavaRazina.Naziv}}</td>
+                    <td>{{rn.TipNastave.Naziv}}</td>
+                    <td style="width: 12%;" class="text-center">
+                        <div class="btn-group">
+                            <button (click)="$event.stopPropagation();detalji(rn.ID)" type="button" class="btn btn-primary btn-lg"><i class="fa fa-info-circle"></i>&nbsp; Detalji</button>
+                        </div>
+                    </td>
+                    <td style="width: 12%;" class="text-center">
+                        <div class="btn-group">
+                            <button (click)="$event.stopPropagation();brisi(rn.ID)" type="button" class="btn btn-danger btn-lg"><i class="fa fa-trash"></i>&nbsp; Briši</button>
+                        </div>
+                    </td>
+                    <!--<td  class="text-center"><input type="checkbox" [value]="rn.ID" (change)="$event.stopPropagation()" name="data-checkbox" /></td>-->
+                  </tr>
+                
+                </tbody>
+                
+              </table>
+            </div>
+            <!-- /.box-body -->
+  
+            <div class="box-footer">
+                <!--<app-pagination #paginator></app-pagination>-->
+            </div>
+          </div>
+          <!-- /.box -->
+          
+          
+  
+      </div>
+      <!-- /.tab-pane -->
+    </div>
+  <!-- /.control-sidebar -->
+  <!-- Add the sidebar's background. This div must be placed
+       immediately after the control sidebar -->
+  <div class="control-sidebar-bg"></div>
+  
+  

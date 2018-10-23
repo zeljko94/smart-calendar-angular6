@@ -1,0 +1,19 @@
+
+<div class="row">
+  <ul class="list-unstyled">
+      <li *ngIf="selected.length <= 0">Nema vještina.</li>
+      <li *ngFor="let sel of selected">
+          <span class="vcenter" style="margin-bottom: 10px;">
+          <span [ngClass]="sel.Icon"></span>{{sel.Name}}
+          <button type="button" (click)="remove(sel)" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+          </span>
+      </li>
+  </ul>
+  <hr>
+<div class="col-xs-4">
+    <select class="form-control" [(ngModel)]="s" (change)="change()">
+        <option [ngValue]="-1">Odaberi vještinu...</option>
+        <option *ngFor="let o of options" [ngValue]="o">{{o.Name}}</option>
+    </select>
+</div>
+</div>

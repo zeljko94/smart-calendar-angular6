@@ -1,0 +1,32 @@
+
+    
+    
+    
+    
+    
+    
+    <a [routerLink]="" class="dropdown-toggle" style="font-size: 20px;" data-toggle="dropdown" aria-expanded="true">
+        <i class="fa fa-envelope-o"></i>
+        <span class="label label-primary" style="font-size: 15px;">4</span>
+      </a>
+      <ul class="dropdown-menu">
+        <li class="header">You have 4 messages</li>
+        <li>
+          <!-- inner menu: contains the actual data -->
+          <ul class="menu">
+            <li><!-- start message -->
+              <a [routerLink]="">
+                <div class="pull-left">
+                  <img src="assets/template/dist/img/user2-160x160.jpg" class="img-circle">
+                </div>
+                <h4>
+                  Support Team
+                  <small><i class="fa fa-clock-o"></i> 5 mins</small>
+                </h4>
+                <p>Why not buy a new awesome theme?</p>
+              </a>
+            </li>
+          </ul>
+        </li>
+        <li class="footer"><a [routerLink]="['/messages']">See All Messages</a></li>
+      </ul>

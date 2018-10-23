@@ -1,0 +1,108 @@
+
+
+
+
+
+
+
+<div [ngClass]="colSize">
+    <div class="box" >
+        <div class="box-header with-border">
+            <h1 class="box-title" style="font-size: 25px;">Unos termina</h1>
+        </div>
+        
+      <div class="box-body">
+        <form class="form-horizontal">
+
+          <div [ngClass]="termin.UcionicaID == '0' ? 'form-group has-error has-feedback': 'form-group'">
+            <label for="ucionica">Učionica:</label>
+            <select class="form-control" name="UcionicaID" [(ngModel)]="termin.UcionicaID" (change)="onChange()">
+              <option value="0">Odaberite učionicu...</option>
+              <option *ngFor="let u of ucionice" [value]="u.ID">{{u.Naziv}}</option>
+            </select>
+
+            <ng-container *ngIf="termin.UcionicaID == '0'">
+                <label class="control-label error-label" for="inputError">
+                    <i class="fa fa-times-circle-o"></i> 
+                    Odaberite učionicu!
+                </label>
+                <br>
+            </ng-container>
+          </div>
+
+          <div *ngIf="nastava" [ngClass]="termin.NastavaID == '0' ? 'form-group has-error has-feedback': 'form-group'">
+              <label for="nastava">Nastava:</label>
+              <select class="form-control" name="NastavaID" [(ngModel)]="termin.NastavaID" (change)="onChange()">
+                <option value="0">Odaberite nastavu...</option>
+                <option *ngFor="let t of tecajevi" [value]="t.ID">{{t.Naziv}}</option>
+                <!--
+                <ng-container *ngIf="auth.isAdmin()"><option *ngFor="let t of tecajeviStore.tecajevi" [value]="t.ID">{{t.Naziv}}</option></ng-container>
+                <ng-container *ngIf="auth.isPredavac()"><option *ngFor="let t of tecajeviStore.predavacTecajevi" [value]="t.ID">{{t.Naziv}}</option></ng-container>
+                -->
+              </select>
+  
+              <ng-container *ngIf="termin.NastavaID == '0'">
+                  <label class="control-label error-label" for="inputError">
+                      <i class="fa fa-times-circle-o"></i> 
+                      Odaberite nastavu!
+                  </label>
+                  <br>
+              </ng-container>
+            </div>
+
+          <div [ngClass]="termin.PocetniDatum > termin.ZavrsniDatum ? 'form-group has-error has-feedback': 'form-group'">
+              <label>Početak:</label>
+              <div class="input-group date">
+                <div class="input-group-addon">
+                  <i class="fa fa-calendar"></i>
+                </div>
+                <input class="form-control" [owlDateTime]="pocetak" [owlDateTimeTrigger]="pocetak" name="pocetak" (dateTimeChange)="onChange()" [(ngModel)]="termin.PocetniDatum"  (change)="onChange()" placeholder="Početno vrijeme...">
+                <owl-date-time #pocetak></owl-date-time>
+              </div>
+                
+                <ng-container *ngIf="termin.PocetniDatum > termin.ZavrsniDatum">
+                    <label class="control-label error-label" for="inputError">
+                        <i class="fa fa-times-circle-o"></i> 
+                        Početni datum mora biti manji od završnog datuma!
+                    </label>
+                    <br>
+                </ng-container>
+          </div>
+
+          <div [ngClass]="termin.ZavrsniDatum < termin.PocetniDatum ? 'form-group has-error has-feedback': 'form-group'">
+              <label>Završetak:</label>
+              <div class="input-group date">
+                <div class="input-group-addon">
+                  <i class="fa fa-calendar"></i>
+                </div>
+                <input class="form-control" [owlDateTime]="zavrsetak" [owlDateTimeTrigger]="zavrsetak" (dateTimeChange)="onChange()" name="zavrsetak" [(ngModel)]="termin.ZavrsniDatum" placeholder="Završno vrijeme...">
+                <owl-date-time #zavrsetak></owl-date-time>
+              </div>
+                
+                <ng-container *ngIf="termin.ZavrsniDatum < termin.PocetniDatum">
+                    <label class="control-label error-label" for="inputError">
+                        <i class="fa fa-times-circle-o"></i> 
+                        Završni datum mora biti veći ili jednak početnome datumu!
+                    </label>
+                    <br>
+                </ng-container>
+          </div>
+
+          <div class="form-group">
+            <button (click)="addTermin()" class="btn btn-lg btn-primary"><i class="fa fa-plus">&nbsp;&nbsp; Dodaj termin</i></button>
+          </div>
+
+          <div class="form-group" *ngIf="errors">
+            <label class="control-label error-label" for="inputError">
+                <i class="fa fa-times-circle-o"></i> 
+                {{errors}}
+            </label>
+          </div>
+
+        </form>
+      </div>
+
+      <div class="box-footer">
+      </div>
+    </div>
+</div>

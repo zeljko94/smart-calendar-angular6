@@ -1,0 +1,10 @@
+
+
+
+<h1 class="text-center" style="font-size: 35px;color: black;" *ngIf="time > 0">
+    TOKEN EXPIRES IN: <b [ngClass]="getCss()">{{time}}&nbsp;s</b>
+</h1>
+
+  <h1 class="text-center" style="font-size: 35px;" *ngIf="time <= 0">
+      <b class="text-danger">TOKEN EXPIRED!</b>
+  </h1>

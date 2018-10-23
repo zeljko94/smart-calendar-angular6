@@ -1,0 +1,207 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~flag-icon-css/css/flag-icon.css";
+@import "~ng-pick-datetime/assets/style/picker.min.css";
+
+
+
+.notification-naslov{
+    white-space: nowrap;      /*keep text on one line */
+    overflow: hidden;         /*prevent text from being shown outside the border */
+    text-overflow: ellipsis;  /*cut off text with an ellipsis*/
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.notification-naslov:hover{
+    cursor: pointer;
+}
+
+.notification-highlight{
+    text-decoration: underline;
+}
+
+.notification-highlight:hover{
+    cursor: pointer;
+}
+
+/************* CALENDAR EVENTS ************************/
+.calendar-event-img{
+    width: 75px;
+    height: 75px;
+}
+
+.calendar-event-wrapper{
+    padding: 30 30 30 30;
+}
+
+
+
+/************ TERMINI TECAJA ************************/
+
+.termini-tecaja-table-body tr td{
+    color: white;
+    font-size: 20px;
+}
+
+.termini-tecaja-table-body tr th{
+    color: black;
+    font-size: 20px;
+    font-weight: bold;
+    background-color: lightgrey;
+}
+
+.odrzan{
+    background-color: #00a65a;
+}
+
+.odrzan:hover{
+    background-color: #008d4b;
+}
+
+.otkazan{
+    background-color: #dd4c39;
+}
+
+.otkazan:hover{
+    background-color: #d23723;
+}
+
+.slijedi{
+    background-color: #00c0ef;
+}
+
+.slijedi:hover{
+    background-color: #00a7d1;
+}
+
+/***************************************************/
+.tecaj-sudionik-img-circle{
+    border-radius: 50%;
+    height: 100px;
+    width: 100px;
+}
+
+.cursor{
+    cursor: pointer;
+}
+
+.btn-tecaj-status{
+    width: 150px;
+    height: 150px;
+    font-size: 25px;
+}
+
+.bold{
+    font-weight: bold;
+}
+
+.bolder{
+    font-weight: bolder;
+}
+
+
+/***************************************************/
+.flag-icon{
+    width: 70px;
+    height: 30px;
+}
+
+.flag-icon-squared{
+    width: 50px;
+    height: 50px;
+}
+
+.content-wrapper{
+    min-height: 600px;
+}
+
+ul.pagination li:hover{
+    cursor: pointer;
+}
+
+.data-table-header{
+    font-size: 25px;
+    font-weight: bold;
+}
+
+
+.data-table-row{
+    font-size: 18px;
+}
+
+.data-table-row:hover{
+    cursor: pointer;
+}
+
+.search-icon:hover{
+    cursor: pointer;
+    color: #00c0ef;
+}
+
+.vcenter {
+    height: auto;
+    display:flex;
+    align-items:center; 
+}
+
+.equal {
+    display: flex;
+    display: -webkit-flex;
+    flex-wrap: wrap;
+  }
+
+.bord{
+    border: 3px solid blue;
+}
+
+.errors-list{
+    list-style-type: none;
+    margin-left: 0px;
+    padding-left: 0px;
+}
+
+.errors-list-item{
+    color: red;
+    margin-left: 0px;
+    padding-left: 0px;
+}
+
+.error-label{
+    color: red;
+}
+
+
+/* CALENDAR EVENTS */
+
+.event-jezik-icon{
+    margin-top: 12px;
+    margin-bottom: 5px;
+}
+
+.event-jezik{
+    font-size: 15px;
+}
+
+.event-nastava{
+    font-weight: bolder;
+    font-size: 12px;
+    margin-bottom: 10px;
+}
+
+.event-predavac{
+    font-size: 10px;
+}
+
+.event-ucionica{
+    font-size: 10px;
+}
+
+.event-razina{
+    font-size: 10px;
+}
+
+.event-tip{
+    font-size: 10px;
+    margin-bottom: 12px;
+}
+

@@ -1,0 +1,138 @@
+
+<div class="content-wrapper" style="min-height: 600px;">
+  <!-- Content Header (Page header) -->
+  <section class="content-header">
+      <h1>
+        Online testovi
+        <small>Online testiranje</small>
+      </h1>
+      
+      <ol class="breadcrumb">
+          <li><a [routerLink]="['/ucenik/dashboard']"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+          <li class="active">Online testovi</li>
+      </ol>
+    </section>
+    
+
+
+   <!-- Main content -->
+   <section class="content">
+    <div class="row">
+      <div class="col-xs-12">
+
+
+      <div class="row">
+        <div class="col-xs-12">
+            <div class="input-group input-group-lg">
+                <input [(ngModel)]="search" (keyup)="applyFilters()" class="form-control" placeholder="Search..." type="text">
+                <span class="input-group-addon"><i class="fa fa-search search-icon"></i></span>
+            </div>
+        </div>
+      </div>
+      <br>
+
+
+
+
+
+      <div class="box">
+        <div class="box-header with-border">
+          <h1 class="box-title" style="font-size: 25px;">Online testovi</h1>  
+        </div>
+      <!-- /.box-header -->
+      <div class="box-body">
+        <table id="razineNastaveTable" class="table table-bordered table-hover table-striped">
+              <tbody>
+                <tr>
+                    <th class="text-center">#</th>
+                    <th>Naziv testa</th>
+                    <th>Opis testa</th>
+                    <th>Jezik</th>
+                    <th>Vrijeme trajanja</th>
+                    <th>Broj pitanja</th>
+                    <th></th>
+                </tr>
+          <tr *ngFor="let t of testovi; let i = index">
+            <td class="text-center" style="width: 3%;">{{i+1}}.</td>
+            <td>{{t.Naziv}}</td>
+            <td>{{t.Opis}}</td>
+            <td [innerHTML]="t.Jezik"></td>
+            <td>{{t.Vrijeme}}</td>
+            <td>{{t.BrojPitanja}}</td>
+            <td></td>
+            <td>
+                <div class="btn-group">
+                    <button (click)="$event.stopPropagation();zapocni(t.ID)" type="button" class="btn btn-success btn-lg"><i class="fa fa-play"></i>&nbsp; Započni test</button>
+                </div>
+            </td>
+          </tr>
+          
+          </tbody>
+          
+        </table>
+      </div>
+      <!-- /.box-body -->
+      <div class="box-footer">
+        <!--<app-pagination #paginator></app-pagination>-->
+      </div>
+    </div>
+    <!-- /.box -->
+
+
+
+
+
+    <div class="box">
+      <div class="box-header with-border">
+        <h1 class="box-title" style="font-size: 25px;">Rezultati završenih testova</h1>  
+      </div>
+    <!-- /.box-header -->
+    <div class="box-body">
+      <table id="razineNastaveTable" class="table table-bordered table-hover table-striped">
+            <tbody>
+              <tr>
+                  <th class="text-center">#</th>
+                  <th>Naziv testa</th>
+                  <th>Jezik</th>
+                  <th>Vrijeme trajanja</th>
+                  <th>Ostvarenih bodova</th>
+                  <th>Datum polaganja</th>
+                  <th></th>
+              </tr>
+        <tr *ngFor="let rt of rezultatiTestova; let i = index">
+          <td class="text-center" style="width: 3%;">{{i+1}}.</td>
+          <td>{{rt.Naziv}}</td>
+          <td [innerHTML]="rt.Jezik"></td>
+          <td>{{rt.Vrijeme}}</td>
+          <td [ngClass]="rt.Bodovi >= 80 ? 'success' : 'danger'">{{rt.Bodovi}}</td>
+          <td>{{rt.Datum}}</td>
+          <td>
+              <div class="btn-group">
+                  <button (click)="$event.stopPropagation();detalji(rt.ID)" type="button" class="btn btn-primary btn-lg"><i class="fa fa-info-circle"></i>&nbsp; Detalji</button>
+              </div>
+          </td>
+        </tr>
+        
+        </tbody>
+        
+      </table>
+    </div>
+    <!-- /.box-body -->
+    <div class="box-footer">
+      <!--<app-pagination #paginator></app-pagination>-->
+    </div>
+  </div>
+  <!-- /.box -->
+
+
+        
+        
+
+    </div>
+    <!-- /.tab-pane -->
+  </div>
+<!-- /.control-sidebar -->
+<!-- Add the sidebar's background. This div must be placed
+     immediately after the control sidebar -->
+<div class="control-sidebar-bg"></div>
+
