@@ -19,7 +19,7 @@
         <li *ngFor="let n of nots">
           <a [routerLink]="['/notification-details/' + n.ID]" style="font-size: 16px;">
             <h1 class="notification-naslov">{{n.Title}}</h1>
-            <i [ngClass]="n.Icon" style="font-size: 22px;"></i> &nbsp;
+            <i [ngClass]="n.Body" style="font-size: 22px;"></i> &nbsp;
             <span [innerHTML]="n.Title"></span>
             <p class="pull-right text-muted" style="font-size: 12px;">{{n.CreatedAt | date: 'dd.MM.yyyy. HH:mm'}}</p>
           </a>

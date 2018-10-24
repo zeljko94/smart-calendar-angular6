@@ -95,10 +95,8 @@ export class AdminRasporediComponent implements OnInit {
           eventDrop: function(event, delta, revertFunc) {
             self.swal.confirmUpdate(
               () => {
-                console.log(event);
-                var termin = {
-                  ID: event.ID,
-                };
+                console.log(event.start);
+                console.log(delta.days);
               },
               () => {
                 revertFunc();
