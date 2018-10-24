@@ -16,7 +16,7 @@ import { NotificationService } from '../../../services/notification.service';
 @Component({
   selector: 'app-admin-rasporedi',
   templateUrl: './admin-rasporedi.component.html',
-  styles: []
+  styleUrls: ['./admin-rasporedi.component.css']
 })
 export class AdminRasporediComponent implements OnInit {
   @ViewChild('unosTerminaComponent') unosTerminaComponent;
