@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import swal from 'sweetalert2';
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -10,19 +11,19 @@ export class SwalService {
 
 
   ok(msg){
-    swal({title: "<h1>Success!</h1>", text: msg, type: "success"});
+    swal({title: "<h1>Uspješno spremanje!</h1>", text: msg, type: "success"});
   }
 
   err(msg){
-    swal({title: "<h1>Error!</h1>", html: "<p style='font-size: 25px;'>" + msg + "</p>", type: "error"});
+    swal({title: "<h1>Greška!</h1>", html: "<p style='font-size: 20px;'>" + msg + "</p>", type: "error"});
   }
 
   warning(msg){
-    swal({title: "<h1>Warning!</h1>", text: msg, type: "warning"});
+    swal({title: "<h1>Upozorenje!</h1>", text: msg, type: "warning"});
   }
 
   showLoading(msg, allowOutsideClick){
-    swal({html: "<h1>" + msg + "</h1>", allowOutsideClick: allowOutsideClick});
+    swal({html: "<h1 class='font-popup-ucitavanje'>" + msg + "</h1>", allowOutsideClick: allowOutsideClick});
     swal.showLoading();
   }
 

@@ -4,14 +4,13 @@
 
 
 
-
 <div [ngClass]="colSize">
     <div class="box" >
         <div class="box-header with-border">
             <h1 class="box-title" style="font-size: 25px;">Unos termina</h1>
         </div>
         
-      <div class="box-body">
+      <div class="box-body" style="padding-left:30px; padding-right: 30px">
         <form class="form-horizontal">
 
           <div [ngClass]="termin.UcionicaID == '0' ? 'form-group has-error has-feedback': 'form-group'">
@@ -89,7 +88,7 @@
           </div>
 
           <div class="form-group">
-            <button (click)="addTermin()" class="btn btn-lg btn-primary"><i class="fa fa-plus">&nbsp;&nbsp; Dodaj termin</i></button>
+            <button (click)="addTermin()" class="btn btn-lg btn-primary"><i class="fa fa-plus" >&nbsp;&nbsp; <span style="font-family: 'Montserrat', sans-serif; font-size: 15px;">Dodaj termin</span></i></button>
           </div>
 
           <div class="form-group" *ngIf="errors">
