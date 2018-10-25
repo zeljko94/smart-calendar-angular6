@@ -11,6 +11,7 @@ import { UcioniceService } from '../../../services/rest/ucionice.service';
 import { TecajeviService } from '../../../services/rest/tecajevi.service';
 
 import * as $ from 'jquery';
+import { NotificationService } from '../../../services/notification.service';
 
 @Component({
   selector: 'app-predavac-rasporedi',
@@ -44,6 +45,7 @@ export class PredavacRasporediComponent implements OnInit {
 
   constructor(
     private auth: AuthService,
+    private notificationService: NotificationService,
     private http: HttpService,
     private terminiService: TerminiService,
     private swal: SwalService,
@@ -131,6 +133,8 @@ export class PredavacRasporediComponent implements OnInit {
                   jsEvent.pageY >= y1 && jsEvent.pageY <= y2) {
                     self.swal.confirmDelete(
                       () => {
+                        self.notificationService.NotifyTerminDelete(event.ID, self.auth.getID())
+                          .subscribe(data => {});
                         self.terminiService.delete(event.ID)
                           .subscribe(data => {
                             if(self.swal.handleResponse){
