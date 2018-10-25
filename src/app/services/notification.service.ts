@@ -112,6 +112,10 @@ export class NotificationService {
 
 
   
+  getAllForUser(UserID){
+    return this.http.getJWT(this.table + "/GetAllForUser", {UserID: UserID});
+  }
+
   getForUser(UserID){
     return this.http.getJWT(this.table + "/GetForUser", {UserID: UserID});
   }

@@ -137,6 +137,11 @@ export class PredavacTecajDetailsComponent implements OnInit {
     }
   }
 
+  
+  dodajTermin(){
+    this.router.navigate(['/predavac/rasporedi']);
+  }
+
 
   brisiObavijest(id){
     this.swal.confirmDelete(

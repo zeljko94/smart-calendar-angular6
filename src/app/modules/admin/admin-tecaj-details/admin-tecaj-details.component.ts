@@ -85,6 +85,10 @@ export class AdminTecajDetailsComponent implements OnInit, OnDestroy {
     });
   }
 
+  dodajTermin(){
+    this.router.navigate(['/admin/rasporedi']);
+  }
+
   deleteSudionik(id){
     this.swal.confirmDelete(
       () => {
