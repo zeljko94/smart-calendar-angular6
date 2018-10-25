@@ -70,7 +70,7 @@ export class NotificationService {
     return this.http.getJWT(this.table + "/notifyRazinaDelete", {RazinaID: RazinaID, IssuerID: IssuerID});
   }
 
-  
+
   notifyTipNastaveInsert(TipID, IssuerID){
     return this.http.getJWT(this.table + "/notifyTipNastaveInsert", {TipID: TipID, IssuerID: IssuerID});
   }
@@ -105,7 +105,10 @@ export class NotificationService {
     return this.http.getJWT(this.table + "/NotifyTerminDelete", {TerminID: TerminID, IssuerID: IssuerID});
   }
   
-
+  
+  NotifyTecajObavijestInsert(TerminID, IssuerID){
+    return this.http.getJWT(this.table + "/NotifyTecajObavijestInsert", {TerminID: TerminID, IssuerID: IssuerID});
+  }
 
 
   

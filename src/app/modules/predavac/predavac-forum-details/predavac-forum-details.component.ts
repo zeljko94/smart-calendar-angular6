@@ -5,6 +5,7 @@ import { AuthService } from '../../../services/auth.service';
 import { UserService } from '../../../services/rest/user.service';
 import { ForumService } from '../../../services/forum.service';
 import { SanitizerService } from '../../../services/sanitizer.service';
+import { NotificationService } from '../../../services/notification.service';
 
 @Component({
   selector: 'app-predavac-forum-details',
@@ -27,6 +28,7 @@ export class PredavacForumDetailsComponent implements OnInit {
     private swal: SwalService,
     private activatedRoute: ActivatedRoute,
     private auth: AuthService,
+    private notificationService: NotificationService,
     private userService: UserService,
     private forumService: ForumService,
     private sanitizer: SanitizerService
@@ -56,6 +58,8 @@ export class PredavacForumDetailsComponent implements OnInit {
   brisiKomentar(id){
     this.swal.confirmDelete(
       () => {
+        this.notificationService.notifyForumPostDelete(id, this.auth.getID())
+          .subscribe(data => {});
         this.forumService.deletePost(id)
           .subscribe(data => {
             if(this.swal.handleResponse(data)){
@@ -79,6 +83,9 @@ export class PredavacForumDetailsComponent implements OnInit {
           this.sanitizer.usrProfileImg(data.Data.Kreator);
           this.forum.Posts.push(data.Data);
           this.comment = {};
+
+          this.notificationService.notifyForumPostInsert(data.Data.ID, this.auth.getID())
+            .subscribe(data => {});
         }
       });
   }

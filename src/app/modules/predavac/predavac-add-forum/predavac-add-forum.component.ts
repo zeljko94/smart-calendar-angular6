@@ -6,6 +6,7 @@ import { PredavaciService } from '../../../services/rest/predavaci.service';
 import { AuthService } from '../../../services/auth.service';
 import { ForumService } from '../../../services/forum.service';
 import { DualListComponent } from 'angular-dual-listbox';
+import { NotificationService } from '../../../services/notification.service';
 
 @Component({
   selector: 'app-predavac-add-forum',
@@ -21,6 +22,7 @@ export class PredavacAddForumComponent implements OnInit {
   };
 
   constructor(private swal: SwalService,
+              private notificationService: NotificationService,
               private router: Router,
               private uceniciService: UceniciService,
               private predavaciService: PredavaciService,
@@ -79,6 +81,8 @@ export class PredavacAddForumComponent implements OnInit {
       this.forumService.insert(this.forum)
         .subscribe(data => {
           if(this.swal.handleResponse(data)){
+            this.notificationService.notifyForumInsert(data.Data.ID, this.auth.getID())
+              .subscribe(data => {});
             this.router.navigate(['/predavac/forum']);
           }
         });

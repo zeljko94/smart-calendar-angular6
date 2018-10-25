@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { SwalService } from '../../../services/swal.service';
 import { ForumService } from '../../../services/forum.service';
 import { AuthService } from '../../../services/auth.service';
+import { NotificationService } from '../../../services/notification.service';
 
 @Component({
   selector: 'app-predavac-forum',
@@ -15,6 +16,7 @@ export class PredavacForumComponent implements OnInit {
   constructor(
     private router: Router,
     private auth: AuthService,
+    private notificationService: NotificationService,
     private swal: SwalService,
     private forumService: ForumService
   ) { }
@@ -39,6 +41,8 @@ export class PredavacForumComponent implements OnInit {
   brisi(id){
     this.swal.confirmDelete(
       () => {
+        this.notificationService.notifyForumDelete(id, this.auth.getID())
+          .subscribe(data => {});
         this.forumService.delete(id)
           .subscribe(data => {
             if(this.swal.handleResponse(data)){

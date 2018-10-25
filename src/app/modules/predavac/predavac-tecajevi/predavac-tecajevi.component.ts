@@ -9,6 +9,7 @@ import { TipoviNastaveService } from '../../../services/rest/tipovi-nastave.serv
 import { SwalService } from '../../../services/swal.service';
 import { TecajeviService } from '../../../services/rest/tecajevi.service';
 import { AuthService } from '../../../services/auth.service';
+import { NotificationService } from '../../../services/notification.service';
 
 @Component({
   selector: 'app-predavac-tecajevi',
@@ -49,6 +50,7 @@ export class PredavacTecajeviComponent implements OnInit {
   
   constructor(private skillService: SkillService,
               private auth: AuthService,
+              private notificationService: NotificationService,
               private router: Router,
               private predavaciService: PredavaciService,
               private uceniciService: UceniciService,
@@ -210,6 +212,8 @@ export class PredavacTecajeviComponent implements OnInit {
               this.tecajeviStore.push(data.Data);
               this.tecajevi = this.tecajeviStore.filter(t => t);
 
+              this.notificationService.notifyTecajInsert(data.Data.ID, this.auth.getID()).subscribe(data => {});
+
               this.changeMode('', null);
             }
           });
@@ -237,6 +241,7 @@ export class PredavacTecajeviComponent implements OnInit {
   brisi(id){
     this.swalService.confirmDelete(
       () => {
+        this.notificationService.notifyTecajDelete(id, this.auth.getID()).subscribe(data => {});
         this.tecajeviService.delete(id)
           .subscribe(data => {
             if(this.swalService.handleResponse(data)){

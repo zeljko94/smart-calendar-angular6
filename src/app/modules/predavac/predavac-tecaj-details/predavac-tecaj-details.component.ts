@@ -7,6 +7,7 @@ import { SwalService } from '../../../services/swal.service';
 import { SanitizerService } from '../../../services/sanitizer.service';
 import { TecajeviService } from '../../../services/rest/tecajevi.service';
 import { NastavneCjelineService } from '../../../services/rest/nastavne-cjeline.service';
+import { NotificationService } from '../../../services/notification.service';
 
 @Component({
   selector: 'app-predavac-tecaj-details',
@@ -36,6 +37,7 @@ export class PredavacTecajDetailsComponent implements OnInit {
   constructor(
     private activatedRoute: ActivatedRoute,
     private terminiService: TerminiService,
+    private notificationService: NotificationService,
     private router: Router,
     private auth: AuthService,
     private obavijestiService: ObavijestiService,
@@ -123,6 +125,8 @@ export class PredavacTecajDetailsComponent implements OnInit {
             this.sanitizer.usrProfileImg(data.Data.Kreator);
             this.obavijesti.unshift(data.Data);
 
+            this.notificationService.NotifyTecajObavijestInsert(this.novaObavijest.TecajID, this.auth.getID())
+              .subscribe(data => {});
             this.novaObavijest = {};
           }
         });
