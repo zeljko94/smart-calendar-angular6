@@ -48,6 +48,8 @@ import { UcenikTerminDetailsComponent } from "./modules/ucenik/ucenik-termin-det
 import { PredavacForumDetailsComponent } from "./modules/predavac/predavac-forum-details/predavac-forum-details.component";
 import { PredavacAddForumComponent } from "./modules/predavac/predavac-add-forum/predavac-add-forum.component";
 import { PredavacTecajDetailsComponent } from "./modules/predavac/predavac-tecaj-details/predavac-tecaj-details.component";
+import { AdminUserProfileDetailsComponent } from "./modules/admin/admin-user-profile-details/admin-user-profile-details.component";
+import { AdminNotificationDetailsComponent } from "./modules/admin/admin-notification-details/admin-notification-details.component";
 
 
 
@@ -179,6 +181,16 @@ const appRoutes: Routes = [
     {
         path: 'admin/termin-details/:id',
         component: AdminTerminDetailsComponent,
+        canActivate: [AdminAuthGuard]
+    },
+    {
+        path: 'admin/user-profile-details/:id',
+        component: AdminUserProfileDetailsComponent,
+        canActivate: [AdminAuthGuard]
+    },
+    {
+        path: 'admin/notification-details/:id',
+        component: AdminNotificationDetailsComponent,
         canActivate: [AdminAuthGuard]
     },
     //#endregion ADMIN ROUTES

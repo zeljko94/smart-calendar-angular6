@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import { NotificationService } from '../../services/notification.service';
 import { SwalService } from '../../services/swal.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-notifications',
@@ -16,6 +17,7 @@ export class NotificationsComponent implements OnInit {
 
   constructor(
     private auth: AuthService,
+    private router: Router,
     private notificationService: NotificationService,
     private swal: SwalService
   ) { }
@@ -27,6 +29,14 @@ export class NotificationsComponent implements OnInit {
           this.notifications = data.Data;
         }
     })
+  }
+
+  notificationDetails(id){
+    this.router.navigate(['/admin/notification-details/' + id]);
+  }
+
+  userDetails(id){
+    this.router.navigate(['/admin/user-profile-details/' + id]);
   }
 
 }
