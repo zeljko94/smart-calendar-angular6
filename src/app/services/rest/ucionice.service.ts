@@ -27,6 +27,7 @@ export class UcioniceService {
     return this.http.postJWT("Ucionica/Update", o);
   }
 
+  /*
   testInsert(o, store){
     return new Observable(observer => {
     this.http.postJWT("Ucionica/Insert", o)
@@ -54,4 +55,5 @@ export class UcioniceService {
     //observer.next(err);
     //observer.complete();
   }
+  */
 }

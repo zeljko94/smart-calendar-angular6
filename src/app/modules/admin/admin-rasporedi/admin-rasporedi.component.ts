@@ -118,7 +118,7 @@ export class AdminRasporediComponent implements OnInit {
                 jsEvent.pageY >= y1 && jsEvent.pageY <= y2) {
                   self.swal.confirmDelete(
                     () => {
-                      self.notificationService.NotifyTerminDelete(event.ID, this.auth.getID())
+                      self.notificationService.NotifyTerminDelete(event.ID, self.auth.getID())
                         .subscribe(data => {});
 
                       self.terminiService.delete(event.ID)

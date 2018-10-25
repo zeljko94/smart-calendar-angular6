@@ -1,6 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { RazineNastaveService } from '../../services/rest/razine-nastave.service';
 import { SwalService } from '../../services/swal.service';
+import { AuthService } from '../../services/auth.service';
+import { NotificationService } from '../../services/notification.service';
 
 @Component({
   selector: 'app-razine-nastave-list',
@@ -16,6 +18,8 @@ export class RazineNastaveListComponent implements OnInit {
   object: any = {};
 
   constructor(private razineNastaveService: RazineNastaveService,
+              private auth: AuthService,
+              private notificationService: NotificationService,
               private swal: SwalService) { }
 
   ngOnInit() {
@@ -57,6 +61,9 @@ export class RazineNastaveListComponent implements OnInit {
           .subscribe(data => {
             if(this.swal.handleResponse(data)){
               this.razineNastave.push(data.Data);
+
+              this.notificationService.notifyRazinaInsert(data.Data.ID, this.auth.getID())
+                .subscribe(data => {});
             }
           });
       }
@@ -79,6 +86,7 @@ export class RazineNastaveListComponent implements OnInit {
     if(this.loggedUserPrivileges == 'admin'){
       this.swal.confirmDelete(
       () => {
+        this.notificationService.notifyRazinaDelete(id, this.auth.getID()).subscribe(data => {});
         this.razineNastaveService.delete(id)
           .subscribe(data => {
             if(this.swal.handleResponse(data)){

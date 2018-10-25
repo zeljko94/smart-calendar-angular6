@@ -1,6 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { TipoviNastaveService } from '../../services/rest/tipovi-nastave.service';
 import { SwalService } from '../../services/swal.service';
+import { AuthService } from '../../services/auth.service';
+import { NotificationService } from '../../services/notification.service';
 
 @Component({
   selector: 'app-tipovi-nastave-list',
@@ -16,6 +18,8 @@ export class TipoviNastaveListComponent implements OnInit {
   object: any = {};
 
   constructor(private tipoviNastaveService: TipoviNastaveService,
+              private auth: AuthService,
+              private notificationService: NotificationService,
               private swal: SwalService) { }
 
   ngOnInit() {
@@ -56,6 +60,9 @@ export class TipoviNastaveListComponent implements OnInit {
             if(this.swal.handleResponse(data)){
               this.tipoviNastave.push(data.Data)
               this.changeMode('',null);
+
+              this.notificationService.notifyTipNastaveInsert(data.Data.ID, this.auth.getID())
+                .subscribe(data => {});
             }
           });
       }
@@ -78,6 +85,8 @@ export class TipoviNastaveListComponent implements OnInit {
     if(this.loggedUserPrivileges == 'admin'){
       this.swal.confirmDelete(
         () => {
+          this.notificationService.notifyTipNastaveDelete(id, this.auth.getID())
+            .subscribe(data => {});
           this.tipoviNastaveService.delete(id)
             .subscribe(data => {
               if(this.swal.handleResponse(data)){

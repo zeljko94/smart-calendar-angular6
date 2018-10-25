@@ -50,6 +50,44 @@ export class NotificationService {
     return this.http.getJWT(this.table + "/NotifyUcenikDelete", {UcenikID: UcenikID, IssuerID: IssuerID});
   }
 
+  
+
+  notifyPredavacInsert(PredavacID, IssuerID){
+    return this.http.getJWT(this.table + "/NotifyPredavacInsert", {PredavacID: PredavacID, IssuerID: IssuerID});
+  }
+
+  notifyPredavacDelete(PredavacID, IssuerID){
+    return this.http.getJWT(this.table + "/NotifyPredavacDelete", {PredavacID: PredavacID, IssuerID: IssuerID});
+  }
+
+
+
+  notifyRazinaInsert(RazinaID, IssuerID){
+    return this.http.getJWT(this.table + "/NotifyRazinaInsert", {RazinaID: RazinaID, IssuerID: IssuerID});
+  }
+
+  notifyRazinaDelete(RazinaID, IssuerID){
+    return this.http.getJWT(this.table + "/notifyRazinaDelete", {RazinaID: RazinaID, IssuerID: IssuerID});
+  }
+
+  
+  notifyTipNastaveInsert(TipID, IssuerID){
+    return this.http.getJWT(this.table + "/notifyTipNastaveInsert", {TipID: TipID, IssuerID: IssuerID});
+  }
+
+  notifyTipNastaveDelete(TipID, IssuerID){
+    return this.http.getJWT(this.table + "/notifyTipNastaveDelete", {TipID: TipID, IssuerID: IssuerID});
+  }
+
+
+  notifyUcionicaInsert(UcionicaID, IssuerID){
+    return this.http.getJWT(this.table + "/NotifyUcionicaInsert", {UcionicaID: UcionicaID, IssuerID: IssuerID});
+  }
+
+  notifyUcionicaDelete(UcionicaID, IssuerID){
+    return this.http.getJWT(this.table + "/NotifyUcionicaDelete", {UcionicaID: UcionicaID, IssuerID: IssuerID});
+  }
+
 
 
 

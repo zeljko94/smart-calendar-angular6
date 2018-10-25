@@ -9,6 +9,8 @@ import { ProfileImageService } from '../../services/rest/profile-image.service';
 import { PersonalDocumentService } from '../../services/rest/personal-document.service';
 import { SanitizerService } from '../../services/sanitizer.service';
 import { Router } from '@angular/router';
+import { AuthService } from '../../services/auth.service';
+import { NotificationService } from '../../services/notification.service';
 
 @Component({
   selector: 'app-add-predavac',
@@ -37,6 +39,8 @@ export class AddPredavacComponent implements OnInit {
   IsRFIDPrivjesakTaken:     boolean = false;
   
   constructor(private http: HttpService,
+              private auth: AuthService,
+              private notificationService: NotificationService,
               private router: Router,
               private sanitizer: SanitizerService,
               private predavaciService: PredavaciService,
@@ -82,6 +86,9 @@ export class AddPredavacComponent implements OnInit {
               if(data.StatusCode > 0){
 
                 var UserID = data.Data.ID;
+                
+                this.notificationService.notifyPredavacInsert(UserID, this.auth.getID())
+                  .subscribe(data => {});
 
                 if(this.ProfileImageFile){
                   this.swal.showLoading("Spremanje profilne slike...", false);
@@ -89,13 +96,13 @@ export class AddPredavacComponent implements OnInit {
                     .subscribe(data => {
                       this.swal.hideLoading();
                       if(data.StatusCode > 0){
-
                         if(this.hasFiles(this.PersonalDocs.map(pd => pd.File))){
                           this.personalDocumentService.insert(UserID, this.PersonalDocs.map(pd => pd.File))
                             .subscribe(data => {
                               this.swal.hideLoading();
                               if(data.StatusCode > 0){
 
+                                  
                                 this.swal.ok("Predavač uspješno spremljen!");
                                 setTimeout(() => {
                                   this.router.navigate(['/admin/predavaci']);

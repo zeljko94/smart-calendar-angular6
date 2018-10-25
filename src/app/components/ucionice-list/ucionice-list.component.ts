@@ -1,6 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { UcioniceService } from '../../services/rest/ucionice.service';
 import { SwalService } from '../../services/swal.service';
+import { AuthService } from '../../services/auth.service';
+import { NotificationService } from '../../services/notification.service';
 
 @Component({
   selector: 'app-ucionice-list',
@@ -16,6 +18,8 @@ export class UcioniceListComponent implements OnInit {
   object: any = {};
 
   constructor(private ucioniceService: UcioniceService,
+              private auth: AuthService,
+              private notificationService: NotificationService,
               private swal: SwalService) { }
 
   ngOnInit() {
@@ -45,18 +49,15 @@ export class UcioniceListComponent implements OnInit {
   spremi(){
     if(this.validateInput()){
       if(this.mode == 'Add'){
-        /*
-        this.ucioniceService.insert(this.object)
+         this.ucioniceService.insert(this.object)
           .subscribe(data => {
             if(this.swal.handleResponse(data)){
               this.ucionice.push(data.Data);
+
+              this.notificationService.notifyUcionicaInsert(data.Data.ID, this.auth.getID())
+                .subscribe(data => {});
             }
           });
-          */
-         this.ucioniceService.testInsert(this.object, this.ucionice).subscribe(res => {
-           
-         });
-          
       }
       else if(this.mode == 'Update'){
         this.ucioniceService.update(this.object)
@@ -78,6 +79,9 @@ export class UcioniceListComponent implements OnInit {
     if(this.loggedUserPrivileges == 'admin'){
       this.swal.confirmDelete(
         () => {
+          this.notificationService.notifyUcionicaDelete(id, this.auth.getID())
+            .subscribe(data => {});
+
           this.ucioniceService.delete(id)
             .subscribe(data => {
               if(this.swal.handleResponse(data)){

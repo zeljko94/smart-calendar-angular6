@@ -4,6 +4,8 @@ import { SanitizerService } from '../../services/sanitizer.service';
 import { SwalService } from '../../services/swal.service';
 import { Router } from '@angular/router';
 import { UserService } from '../../services/rest/user.service';
+import { AuthService } from '../../services/auth.service';
+import { NotificationService } from '../../services/notification.service';
 
 @Component({
   selector: 'app-predavaci-list',
@@ -23,6 +25,8 @@ export class PredavaciListComponent implements OnInit {
   users: any[] = [];
 
   constructor(private predavaciService: PredavaciService,
+              private auth: AuthService,
+              private notificationService: NotificationService,
               private usersService: UserService,
               private router: Router,
               private swal: SwalService,
@@ -89,6 +93,9 @@ export class PredavaciListComponent implements OnInit {
       this.swal.confirmDelete(
         () => {
           this.swal.showLoading("Brisanje predavača...", false);
+          this.notificationService.notifyPredavacDelete(id, this.auth.getID())
+            .subscribe(data => {});
+            
           this.predavaciService.delete(id)
             .subscribe(
               data => {
