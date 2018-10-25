@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-notification-details',
@@ -7,9 +8,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NotificationDetailsComponent implements OnInit {
 
-  constructor() { }
+  id: any = 0;
+  notification: any = {};
+
+  private sub: any;
+
+  constructor(
+    private activatedRoute: ActivatedRoute,
+
+  ) { }
 
   ngOnInit() {
+    this.sub = this.activatedRoute.params.subscribe(params => {
+      this.id = +params['id'];
+
+      if(this.id){
+        alert(this.id);
+      }
+    });
   }
 
 }

@@ -1,0 +1,12 @@
+
+
+
+
+
+.notification-row:hover{
+    cursor: pointer;
+}
+
+.mailbox-name-link:hover{
+    text-decoration: underline;
+}

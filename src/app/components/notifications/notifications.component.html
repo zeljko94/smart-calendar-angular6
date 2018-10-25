@@ -59,7 +59,7 @@
             <div class="table-responsive mailbox-messages">
               <table class="table table-hover table-striped">
                 <tbody>
-                    <tr *ngFor="let n of notifications" (click)="notificationDetails(n.ID)">
+                    <tr *ngFor="let n of notifications" class="notification-row" (click)="notificationDetails(n.ID)">
                         <td>
                           <div class="icheckbox_flat-blue" style="position: relative;" aria-checked="false" aria-disabled="false">
                             <input style="position: absolute; opacity: 0;" type="checkbox">
@@ -68,9 +68,9 @@
                             </ins>
                           </div>
                         </td>
-                        <td class="mailbox-star text-primary"><i class="fa fa-envelope"></i></td>
+                        <td class="mailbox-star text-primary"><i [ngClass]="n.DateOpened ? 'fa fa-envelope-open-o' : 'fa fa-envelope'"></i></td>
                         <td class="mailbox-star text-primary"><i [ngClass]="n.Icon"></i></td>
-                        <td class="mailbox-name"><a [routerLink]=""  (click)="$event.stopPropagation();userDetails(n.CreatedUserID)">{{n.CreatedUserFullName}}</a></td>
+                        <td class="mailbox-name"><a class="mailbox-name-link" [routerLink]=""  (click)="$event.stopPropagation();userDetails(n.CreatedUserID)">{{n.CreatedUserFullName}}</a></td>
                         <td class="mailbox-subject"><b>{{n.Title}}</b> - <span [innerHTML]="n.Body"></span>
                         </td>
                         <td class="mailbox-attachment"></td>

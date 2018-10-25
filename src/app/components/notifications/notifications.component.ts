@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-notifications',
   templateUrl: './notifications.component.html',
-  styles: []
+  styleUrls: ['./notifications.component.css']
 })
 export class NotificationsComponent implements OnInit {
 
@@ -32,6 +32,7 @@ export class NotificationsComponent implements OnInit {
   }
 
   notificationDetails(id){
+    console.log(this.notifications.find(n => n.ID == id));
     this.router.navigate(['/admin/notification-details/' + id]);
   }
 
