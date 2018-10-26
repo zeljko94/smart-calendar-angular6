@@ -74,7 +74,7 @@
                         <td class="mailbox-subject"><b>{{n.Title}}</b> - <span [innerHTML]="n.Body"></span>
                         </td>
                         <td class="mailbox-attachment"></td>
-                        <td class="mailbox-date">{{n.CreatedAt | date: 'dd. MM. yyyy.'}}</td>
+                        <td class="mailbox-date">{{n.CreatedAt | date: 'dd. MM. yyyy. HH:mm:ss'}}</td>
                       </tr>
                 </tbody>
               </table>
@@ -83,6 +83,8 @@
             <!-- /.mail-box-messages -->
           </div>
           <!-- /.box-body -->
+
+
           <div class="box-footer no-padding">
             <div class="mailbox-controls">
               <!-- Check all button -->

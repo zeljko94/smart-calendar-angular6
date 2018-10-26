@@ -10,6 +10,11 @@ export class NotificationService {
 
   constructor(private http: HttpService) { }
 
+  getByID(id){
+    return this.http.getJWT(this.table + "/Get", {ID: id});
+  }
+
+  
 
   notifyTecajInsert(TecajID, IssuerID){
     return this.http.getJWT(this.table + "/NotifyTecajInsert", {TecajID: TecajID, IssuerID: IssuerID});
