@@ -27,12 +27,12 @@ export class NotificationsComponent implements OnInit {
       .subscribe(data => {
         if(this.swal.handleResponse(data)){
           this.notifications = data.Data;
+          console.log(data);
         }
     })
   }
 
   notificationDetails(id){
-    console.log(this.notifications.find(n => n.ID == id));
     this.router.navigate(['/admin/notification-details/' + id]);
   }
 

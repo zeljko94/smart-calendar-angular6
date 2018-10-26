@@ -1,12 +1,13 @@
 
-<body class="hold-transition login-page">
+
+<body class="hold-transition login-page pozadina">
   <div class="login-box">
     <div class="login-logo">
-      <a routerLink=''><b>Admin</b>LTE</a>
+      <img src="assets/template/dist/img/exploode_profile.png" width="70%">
     </div>
     <!-- /.login-logo -->
     <div class="login-box-body">
-      <p class="login-box-msg">Sign in to start your session</p>
+      <p class="login-box-msg">- DOBRODOŠLI -<br><br></p>
   
         <div [ngClass]="email !='' ?'form-group has-feedback': 'form-group has-error has-feedback'">
           <input type="email" class="form-control" placeholder="E-mail" [(ngModel)]="email">
@@ -22,33 +23,30 @@
         <div class="row">
           <div class="col-xs-8">
             <div class="checkbox icheck">
-              <label>
-                <input type="checkbox"> Remember Me
+              <label style="margin-left:20px;">
+                <input type="checkbox"> Zapamti me
               </label>
             </div>
           </div>
           <!-- /.col -->
           <div class="col-xs-4">
-            <button type="button" (click)="login()" class="btn btn-primary btn-block btn-flat">Sign In</button>
+            <button type="button" (click)="login()" class="btn btn-primary btn-block">Prijavi se</button>
           </div>
           <!-- /.col -->
         </div>
-  
-      <div class="social-auth-links text-center">
-        <p>- OR -</p>
-        <button (click)="facebookLogin()" class="btn btn-block btn-social btn-facebook btn-flat"><i class="fa fa-facebook"></i> Sign in using
-          Facebook</button>
-        <button  (click)="googleLogin()" class="btn btn-block btn-social btn-google btn-flat"><i class="fa fa-google-plus"></i> Sign in using
-          Google+</button>
-      </div>
-      <!-- /.social-auth-links -->
-  
-      <a [routerLink]="">I forgot my password</a><br>
-      <!--<a href="register.html" class="text-center">Become a member</a>-->
+ 
+      
   
     </div>
+    <div class="text-center">
+    <a [routerLink]="" class="lozinka"><b>Zaboravili ste lozinku ?</b></a><br>
+    </div>
+    <!--<a href="register.html" class="text-center">Become a member</a>-->
+
     <!-- /.login-box-body -->
   </div>
   <!-- /.login-box -->
+  <br><br><br><br><br>
   
-  
+  </body>
+ 

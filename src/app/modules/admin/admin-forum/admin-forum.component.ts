@@ -8,7 +8,7 @@ import { AuthService } from '../../../services/auth.service';
 @Component({
   selector: 'app-admin-forum',
   templateUrl: './admin-forum.component.html',
-  styles: []
+  styleUrls: ['./admin-forum.component.css']
 })
 export class AdminForumComponent implements OnInit {
 

@@ -6,7 +6,7 @@ import { SwalService } from '../../services/swal.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styles: []
+  styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
 
@@ -31,7 +31,7 @@ export class LoginComponent implements OnInit {
   login(){
     if(this.email){
       if(this.password){
-        this.swal.showLoading("Logging in...", false);
+        this.swal.showLoading("Molimo pričekajte . . .", false);
         this.auth.login(this.email, this.password)
         .subscribe(data => {
           this.swal.hideLoading();
