@@ -11,15 +11,15 @@ export class SwalService {
 
 
   ok(msg){
-    swal({title: "<h1>Uspješno spremanje!</h1>", text: msg, type: "success"});
+    swal({title: "<h1 class='font-popup-ucitavanje'>Uspješno spremanje!</h1>", text: msg, type: "success"});
   }
 
   err(msg){
-    swal({title: "<h1>Greška!</h1>", html: "<p style='font-size: 20px;'>" + msg + "</p>", type: "error"});
+    swal({title: "<h1 class='font-popup-ucitavanje'>Greška!</h1>", html: "<p style='font-size: 20px;'>" + msg + "</p>", type: "error"});
   }
 
   warning(msg){
-    swal({title: "<h1>Upozorenje!</h1>", text: msg, type: "warning"});
+    swal({title: "<h1 class='font-popup-ucitavanje'>Upozorenje!</h1>", text: msg, type: "warning"});
   }
 
   showLoading(msg, allowOutsideClick){

@@ -1,14 +1,14 @@
 <div class="content-wrapper">
   <section class="content-header">
-      <h1>
-        <span class="margin-r-5">User profile</span>
+      <h1 class="font-opcenito">
+        
         <button (click)="triggerPredavacUpdate()" class="btn btn-success margin-r-5" [disabled]="didChange"><i class="fa fa-save"></i>&nbsp;&nbsp;Spremi izmjene</button>
-        <button class="btn btn-danger margin-r-5" [disabled]="didChange"><i class="fa fa-undo"></i>&nbsp;&nbsp;Reset</button>
+        <button class="btn btn-danger margin-r-5" [disabled]="didChange"><i class="fa fa-undo"></i>&nbsp;&nbsp;Poništi</button>
       </h1>
       <ol class="breadcrumb">
-        <li><a [routerLink]="['/admin/dashboard']"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+        <li><a [routerLink]="['/admin/dashboard']"><i class="fa fa-dashboard"></i> Nadzorna ploča</a></li>
         <li><a [routerLink]="['/admin/predavaci']"><i class="fa fa-users"></i> Predavaci</a></li>
-        <li class="active">Details</li>
+        <li class="active">Detalji</li>
       </ol>
     </section>
 
