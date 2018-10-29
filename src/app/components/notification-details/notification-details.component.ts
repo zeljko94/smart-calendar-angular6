@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { NotificationService } from '../../services/notification.service';
 
 @Component({
   selector: 'app-notification-details',
@@ -15,7 +16,7 @@ export class NotificationDetailsComponent implements OnInit {
 
   constructor(
     private activatedRoute: ActivatedRoute,
-
+    private notificatinService: NotificationService
   ) { }
 
   ngOnInit() {
@@ -23,7 +24,10 @@ export class NotificationDetailsComponent implements OnInit {
       this.id = +params['id'];
 
       if(this.id){
-        alert(this.id);
+        this.notificatinService.getByID(this.id)
+          .subscribe(data => {
+            this.notification = data.Data;
+          });
       }
     });
   }

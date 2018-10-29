@@ -1,3 +1,44 @@
-<p>
-  notification-details works!
-</p>
+<div class="content-wrapper" style="min-height: 990.3px;">
+  <!-- Content Header (Page header) -->
+  <section class="content-header">
+    <h1>
+      Notifikacija
+      <small>Pregled notifikacije</small>
+    </h1>
+    <ol class="breadcrumb">
+      <li><a [routerLink]=""><i class="fa fa-dashboard"></i> Home</a></li>
+      <li class="active">Notifikacija</li>
+    </ol>
+  </section>
+
+  <!-- Main content -->
+  <section class="content">
+    <div class="row">
+      <!-- /.col -->
+      <div class="col-md-12">
+        <div class="box box-primary">
+          <div class="box-header with-border">
+            <h1 class="box-title" style="font-size: 25px;">
+              {{notification.Title}}
+            </h1>
+          </div>
+          <!-- /.box-header -->
+
+
+
+          <div class="box-body no-padding" style="margin-left: 10px;" [innerHTML]="notification.Body">
+          </div>
+          <!-- /.box-body -->
+
+
+          <div class="box-footer no-padding">
+          </div>
+        </div>
+        <!-- /. box -->
+      </div>
+      <!-- /.col -->
+    </div>
+    <!-- /.row -->
+</section>
+  <!-- /.content -->
+</div>
