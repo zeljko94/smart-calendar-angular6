@@ -78,6 +78,7 @@ export class AdminRasporediComponent implements OnInit {
         this.events = data.Data;
         
         $("#myCal").fullCalendar({
+          locale: 'hr',
           editable:  true,
           eventLimit: false,
           displayEventTime: false,
