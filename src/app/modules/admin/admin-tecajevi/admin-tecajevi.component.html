@@ -104,7 +104,7 @@
                             <div class="form-group">
                                 <label for="opis" class="col-sm-2 control-label">Učenici:</label>
                                 <div class="col-sm-10">
-                                    <dual-list [source]="object.source" [(destination)]="object.destination" [format]="format" [display]="dualListDisplay" [key]="'ID'" (destinationChange)="destinationChange($event)"></dual-list>
+                                    <dual-list [source]="object.source" [(destination)]="object.destination" [format]="format" [display]="dualListDisplay" [key]="'ID'" [height]="5" (destinationChange)="destinationChange($event)"></dual-list>
                                 </div>
                             </div>
                           </div>

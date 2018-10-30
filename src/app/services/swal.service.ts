@@ -15,7 +15,7 @@ export class SwalService {
   }
 
   err(msg){
-    swal({title: "<h1 class='font-popup-ucitavanje'>Greška!</h1>", html: "<p style='font-size: 20px;'>" + msg + "</p>", type: "error"});
+    swal({title: "<h1 class='font-popup-ucitavanje'>Greška!</h1>", html: "<p>" + msg + "</p>", type: "error"});
   }
 
   warning(msg){

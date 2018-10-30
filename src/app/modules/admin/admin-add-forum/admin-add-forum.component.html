@@ -42,7 +42,7 @@
                           <div class="form-group">
                             <label for="opis" class="col-sm-2 control-label">Sudionici:</label>
                             <div class="col-sm-10">
-                                <dual-list [source]="forum.source" [(destination)]="forum.destination" [format]="format" [display]="dualListDisplay" [key]="'ID'" (destinationChange)="destinationChange($event)"></dual-list>
+                                <dual-list [source]="forum.source" [(destination)]="forum.destination" [format]="format" [display]="dualListDisplay" [key]="'ID'" [height]="5" (destinationChange)="destinationChange($event)"></dual-list>
                             </div>
                         </div>
 
@@ -50,7 +50,7 @@
                         <!-- /.box-body -->
                         <div class="box-footer">
                           <button type="button" (click)="spremi()" class="btn btn-success" style="margin-right: 10px;"><i class="fa fa-save"></i>&nbsp; Spremi</button>
-                          <button type="button" (click)="forum={}" class="btn btn-danger"><i class="fa fa-undo"></i>&nbsp; Reset</button>
+                          <button type="button" (click)="forum={}" class="btn btn-danger"><i class="fa fa-undo"></i>&nbsp; Poništi</button>
                         </div>
                         <!-- /.box-footer -->
                       </form>

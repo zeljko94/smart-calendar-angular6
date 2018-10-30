@@ -51,10 +51,14 @@
                     </div>
                     <div class="col-xs-1 text-center vcenter" style="font-weight: bold;">{{i+1}}. <!--{{((this.paginator.ps.currentPage-1) * this.paginator.ps.pageSize) + (i+1)}}.--></div>
                     <div class="col-xs-3 vcenter">
-                        <img class="profile-user-img img-responsive img-circle" style="height: 200px;width: 200px;" [src]="p.ProfileImage.DataUrl">
+                        <div>
+                          <img class="profile-user-img img-responsive img-circle" style="height: 200px;width: 200px;" [src]="p.ProfileImage.DataUrl">
+                          <h1 class="predavaci-row-name text-center">{{p.Name}} {{p.LastName}}</h1>
+                          </div>
+                        
                     </div>
                     <div class="col-xs-6">
-                      <h1 class="predavaci-row-name text-center">{{p.Name}} {{p.LastName}}</h1>
+                      
                       <hr class="divider">
                       <strong><i class="fa fa-book margin-r-5"></i> Edukacija</strong><p class="text-muted"> {{p.Edukacija}} </p>
                       <hr class="divider">

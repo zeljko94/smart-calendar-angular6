@@ -55,7 +55,7 @@ export class AdminAddForumComponent implements OnInit {
   }
 
   
-  format = { add: 'Dodaj', remove: 'Ukloni', all: 'Označi sve', none: 'Odznači sve',
+  format = { add: 'Dodaj', remove: 'Ukloni', all: 'Označi sve', none: 'Poništi',
              direction: DualListComponent.LTR, draggable: true, locale: 'en' };
 
 
