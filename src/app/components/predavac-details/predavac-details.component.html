@@ -11,7 +11,7 @@
                         </div>
     
                         <div class="col-xs-7">
-                            <h1 class="profile-username" style="font-size: 35px;font-weight: bold;margin-bottom: 0px;padding-bottom: 0px;">{{p.Name}} {{p.LastName}}
+                            <h1 class="profile-username" style="font-size: 20px;font-weight: bold;margin-bottom: 0px;padding-bottom: 0px; font-family: 'Montserrat', sans-serif;">{{p.Name}} {{p.LastName}}
                               <!--<sup class="text-muted" style="font-size: 15px;">Software Engineer</sup>-->
                             </h1>
                             
@@ -31,7 +31,7 @@
                       </div>
                       <div class="row" style="margin-top:10px;">
                         <div class="col-xs-5 text-center">
-                          <button type="button" (click)="usrImgInput.click()" class="btn btn-default btn-lg">
+                          <button type="button" (click)="usrImgInput.click()" class="btn btn-default ">
                               <i class="fa fa-camera"></i>
                             Promijeni sliku
                           </button>
@@ -88,11 +88,11 @@
                   
                 <div class="nav-tabs-custom">
                     <ul class="nav nav-tabs">
-                      <li class="active"><a href="#account" data-toggle="tab">Account</a></li>
+                      <li class="active"><a href="#account" data-toggle="tab">Profil</a></li>
                       <li><a href="#personal-info" data-toggle="tab">Osobne informacije</a></li>
                       <li><a href="#about-me" data-toggle="tab">O meni</a></li>
                       <li><a href="#timeline" data-toggle="tab" aria-expanded="true">Timeline</a></li>
-                      <li><a href="#personal-documents" data-toggle="tab">Osobni dokumenti</a></li>
+                      <li><a href="#personal-documents" data-toggle="tab">Dokumenti</a></li>
                     </ul>
                     <div class="tab-content">
     
@@ -432,7 +432,7 @@
                                     <div class="info-box-content">
                                       <span class="info-box-text"><u>{{doc.FileName}}</u></span>
                                       <a href="#" style="margin-right: 20px;">Preuzmi</a>
-                                      <a href="#">Preview</a>
+                                      <a href="#">Pregledaj</a>
                                     </div>
                                   </div>
                                 </div>
@@ -445,7 +445,7 @@
                                       <label for="exampleInputFile">File input</label>
                                       <input #usrDocInput id="exampleInputFileDoc" type="file" (change)="personalDocAdd()" multiple>
                                   </div>
-                                  <button type="button" (click)="usrDocInput.click()" class="btn btn-default btn-lg">
+                                  <button type="button" (click)="usrDocInput.click()" class="btn btn-default ">
                                     <i class="fa fa-plus"></i>
                                   Dodaj dokument
                                 </button>

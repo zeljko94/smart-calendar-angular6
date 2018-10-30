@@ -52,7 +52,7 @@ export class LeftsideComponent implements OnInit {
   getAdminNavItems(){
     this.navigationItems = [
       {
-        text: "Dashboard",
+        text: "Nadzorna ploča",
         link: "/admin/dashboard",
         icon: "fa fa-dashboard",
         active: false
