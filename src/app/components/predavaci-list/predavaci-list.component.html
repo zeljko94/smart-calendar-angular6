@@ -2,9 +2,10 @@
 
             
                 <div class="row">
-                  <div class="col-xs-2" style="margin-top: 5px;">
+                  <div class="col-xs-2" style="margin-top: 6px;">
                       <button type="button" id="addPredavacBtn" class="btn btn-default " [routerLink]="['/admin/add-predavac']"><i class="fa fa-plus" ></i> Dodaj predavača</button>
                   </div>
+                  <div class="col-xs-5"></div>
 
                   <div class="col-xs-2" style="margin-top: 6px;">
                     <div class="form-group">
@@ -16,8 +17,9 @@
                     </div>
                   </div>
                   
-                <div class="col-xs-8">
-                    <div class="input-group input-group-lg">
+                  
+                <div class="col-xs-3" style="margin-top: 6px;">
+                    <div class="input-group">
                         <input id="search" #searchRef [(ngModel)]="search" (keyup)="applyFilters()" class="form-control" placeholder="Pretraži..." type="text">
                         <span class="input-group-addon"><i class="fa fa-search search-icon"></i></span>
                     </div>

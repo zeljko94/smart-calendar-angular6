@@ -40,6 +40,12 @@ body{
     background: #6f1399;
 }
 
+.vcenter {
+    display: inline-block;
+    vertical-align: middle;
+    float: none;
+}
+
 
 .notification-naslov{
     white-space: nowrap;      /*keep text on one line */
