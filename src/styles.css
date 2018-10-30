@@ -25,6 +25,21 @@ body{
     font-size: 15px;
 }
 
+.btn-primary{
+
+    background:#4a0d66;
+}
+.btn-primary:hover{
+
+    background:#2E0840;
+
+}
+
+.btn-primary:active:hover{
+
+    background: #6f1399;
+}
+
 
 .notification-naslov{
     white-space: nowrap;      /*keep text on one line */
