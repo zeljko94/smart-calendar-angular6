@@ -20,6 +20,7 @@ export class AddUcenikComponent implements OnInit {
   @Input() role = '';
   @ViewChild('usrImgInput') usrImgInput;
   @ViewChild('usrDocInput') usrDocInput;
+  @ViewChild('pocetak') datumRodj = new Date();
 
   p: any = {
     Privileges: "ucenik", Skills: [],
