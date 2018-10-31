@@ -6,15 +6,15 @@
 
 <div class="row">
   <div class="col-xs-2" style="margin-top: 6px;">
-      <button type="button" class="btn btn-default " [routerLink]="['/' + role + '/add-ucenik']"><i class="fa fa-plus" ></i> Dodaj učenika</button>
+      <button type="button" class="btn btn-default " [routerLink]="['/' + role + '/add-ucenik']"><i class="fa fa-user-plus" aria-hidden="true"></i>&nbsp; Dodaj učenika</button>
   </div>
   <div class="col-xs-5"></div>
   
   <div class="col-xs-2" style="margin-top: 6px;">
     <div class="form-group">
     <select class="form-control" name="searchBy" [(ngModel)]="searchBy" (change)="searchByChange()">
-        <option value="1">RFID</option>
-        <option value="2">Ime i prezime</option>
+        <option value="1">&#xf09d; &nbsp; RFID </option>
+        <option value="2">&#xf007;  &nbsp; Ime Prezime  </option>
       </select>
     </div>
   </div>
@@ -45,7 +45,7 @@
 
 
 <div class="box-body">
-  <h3 *ngIf="ucenici.length <= 0" class="text-warning">Nema učenika za prikaz.</h3>
+  <h3 *ngIf="ucenici.length <= 0" class="text-warning font-opcenito" style="font-size:15px;">Nema učenika za prikaz.</h3>
   <div class="row predavaci-row equal" *ngFor="let p of ucenici; let i = index" (click)="rowClick(p)">
     
     <!--<div class="col-xs-1 text-center vcenter" style="font-size: 36px; font-weight: bold;">{{((this.paginator.ps.currentPage-1) * this.paginator.ps.pageSize) + (i+1)}}.</div>-->

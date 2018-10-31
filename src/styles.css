@@ -2,6 +2,14 @@
 @import "~flag-icon-css/css/flag-icon.css";
 @import "~ng-pick-datetime/assets/style/picker.min.css";
 @import url('https://fonts.googleapis.com/css?family=Montserrat:400,700');
+@import url("https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css");
+
+
+select { 
+    
+    font-family: 'FontAwesome', Verdana 
+
+}
 
 body{
 
