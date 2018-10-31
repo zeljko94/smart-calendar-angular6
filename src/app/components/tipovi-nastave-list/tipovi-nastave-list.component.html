@@ -4,8 +4,8 @@
           <div class="col-xs-12">
             <div class="box" *ngIf="mode != ''">
                 <div class="box-header with-border">
-                  <h1 class="box-title" *ngIf="mode == 'Add'"><b>Dodaj tip nastave</b></h1>
-                  <h1 class="box-title" *ngIf="mode == 'Update'"><b>Izmjeni tip nastave</b></h1>
+                  <h1 class="box-title font-opcenito" *ngIf="mode == 'Add'"><b>Dodaj tip nastave</b></h1>
+                  <h1 class="box-title font-opcenito" *ngIf="mode == 'Update'"><b>Izmjeni tip nastave</b></h1>
 
                   <div class="box-tools pull-right">
                       <button type="button" (click)="changeMode('', rn)" class="btn btn-box-tool"><i class="fa fa-times"></i></button>
@@ -16,7 +16,7 @@
                   <div class="box-body text-left">
                     <div [ngClass]="object.Naziv == '' ? 'form-group has-error has-feedback' : 'form-group'">
                       <label for="naziv" class="col-sm-2 control-label">Naziv:</label>
-                      <div class="col-sm-10">
+                      <div class="col-sm-4">
                         <input [(ngModel)]="object.Naziv" class="form-control" name="Naziv" placeholder="Naziv razine..." type="text">
                         <p *ngIf="object.Naziv == ''" style="color: red;">Unesite naziv tipa nastave!</p>
                       </div>
@@ -24,7 +24,7 @@
 
                     <div [ngClass]="object.Opis == '' ? 'form-group has-error has-feedback' : 'form-group'">
                       <label for="opis" class="col-sm-2 control-label">Opis:</label>
-                      <div class="col-sm-10">
+                      <div class="col-sm-4">
                         <input [(ngModel)]="object.Opis" class="form-control" name="Opis" placeholder="Opis razine..." type="text">
                         <p *ngIf="object.Opis == ''" style="color: red;">Unesite opis tipa nastave!</p>
                       </div>
@@ -32,8 +32,8 @@
                   </div>
                   <!-- /.box-body -->
                   <div class="box-footer">
-                    <button type="button" (click)="spremi()" class="btn btn-success btn-lg" style="margin-right: 10px;"><i class="fa fa-save"></i>&nbsp; Spremi</button>
-                    <button type="button" (click)="object={}" class="btn btn-danger btn-lg"><i class="fa fa-undo"></i>&nbsp; Reset</button>
+                    <button type="button" (click)="spremi()" class="btn btn-success" style="margin-right: 10px;"><i class="fa fa-save"></i>&nbsp; Spremi</button>
+                    <button type="button" (click)="object={}" class="btn btn-danger"><i class="fa fa-undo"></i>&nbsp; Poništi</button>
                   </div>
                   <!-- /.box-footer -->
                 </form>
@@ -45,41 +45,34 @@
 
         <div class="row">
           <div class="col-xs-2">
-            <button type="button" class="btn btn-default btn-lg " (click)="changeMode('Add', rn)"><i class="fa fa-plus" ></i> Dodaj tip nastave</button>
+            <button type="button" class="btn btn-default" (click)="changeMode('Add', rn)"><i class="fa fa-gears" ></i> Dodaj tip nastave</button>
           </div>
-          <div class="col-xs-10">
-              <div class="input-group input-group-lg">
-                  <input [(ngModel)]="search" (keyup)="applyFilters()" class="form-control" placeholder="Search..." type="text">
-                  <span class="input-group-addon"><i class="fa fa-search search-icon"></i></span>
-              </div>
-          </div>
+          
         </div>
         <br>
 
   <div class="box">
-      <div class="box-header with-border">
-          <h1 class="box-title" style="font-size: 25px;">Tipovi nastave</h1>  
-        </div>
+     
     <!-- /.box-header -->
     <div class="box-body">
       <table id="tipoviNastaveTable" class="table table-bordered table-hover table-striped">
         <tbody>
-          <tr style="font-size: 30px;">
-              <th class="text-center">#</th>
+          <tr>
+              <th class="text-center">Br.</th>
               <th>Naziv</th>
               <th>Opis</th>
               <th></th>
               <!--<th class="text-center"><input type="checkbox" [(ngModel)]="checkAll" (change)="checkAllOnChange()" name="check-all" /></th>-->
           </tr>
 
-          <tr *ngFor="let rn of tipoviNastave; let i = index" style="font-size: 25px;"  (click)="changeMode('Update',rn)">
+          <tr *ngFor="let rn of tipoviNastave; let i = index"   (click)="changeMode('Update',rn)">
             <td class="text-center" style="width: 3%;">{{i+1}}.</td>
             <!--<td class="text-center" style="width: 3%;">{{((this.paginator.ps.currentPage-1) * this.paginator.ps.pageSize) + (i+1)}}.</td>-->
             <td>{{rn.Naziv}}</td>
             <td>{{rn.Opis}}</td>
             <td style="width: 14%;" class="text-center">
                 <div class="btn-group">
-                    <button (click)="$event.stopPropagation();brisi(rn.ID)" type="button" class="btn btn-danger btn-lg"><i class="fa fa-trash"></i>&nbsp; Briši</button>
+                    <button (click)="$event.stopPropagation();brisi(rn.ID)" type="button" class="btn btn-danger"><i class="fa fa-trash"></i>&nbsp; Briši</button>
                 </div>
             </td>
             <!--<td  class="text-center"><input type="checkbox" [value]="rn.ID" (change)="$event.stopPropagation()" name="data-checkbox" /></td>-->

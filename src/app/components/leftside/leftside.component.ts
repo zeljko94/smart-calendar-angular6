@@ -99,7 +99,7 @@ export class LeftsideComponent implements OnInit {
       {
         text: "Tipovi nastave",
         link: "/admin/tipovi-nastave",
-        icon: "fa fa-cog",
+        icon: "	fa fa-gears",
         active: false,
       },
       {
@@ -117,7 +117,7 @@ export class LeftsideComponent implements OnInit {
       {
         text: "Certifikati",
         link: "/admin/certifikati",
-        icon: "fa fa-newspaper-o",
+        icon: "fa fa-id-card-o",
         active: false,
       },
     ];
