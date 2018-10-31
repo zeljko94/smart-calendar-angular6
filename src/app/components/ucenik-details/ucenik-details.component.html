@@ -2,7 +2,74 @@
       <button id="spremiUcenikaHidden" (click)="spremi()" hidden></button>
       <button id="resetUcenikaHidden"  (click)="reset()" hidden></button>
 
+      
+      
       <div class="row equal" *ngIf="doneLoading">
+          <div class="col-sm-7">
+            <div class="box box-primary">
+                <div class="box-body box-profile">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <img class="profile-user-img img-responsive img-circle" style="height: 200px;width: 200px;" [src]="p.ProfileImage.DataUrl">
+                            <div class="form-group" hidden>
+                                <label for="exampleInputFile">File input</label>
+                                <input #usrImgInput id="exampleInputFile" type="file" accept="image/*" (change)="userImgChange()">
+                            </div>
+                            <h1 class="profile-username text-center" style="font-size: 20px;font-weight: bold;margin-bottom: 0px;padding-bottom: 0px; font-family: 'Montserrat', sans-serif;">
+                                        {{p.Name}} {{p.LastName}}
+                                <!--<sup class="text-muted" style="font-size: 15px;">Software Engineer</sup>-->
+                            </h1>
+                            <h1 class="profile-username text-center" style="font-size: 20px;font-weight: bold;margin-bottom: 0px;padding-bottom: 0px; font-family: 'Montserrat', sans-serif;">
+                                    <button type="button" (click)="usrImgInput.click()" class="btn btn-default">
+                                            <i class="fa fa-camera"></i>
+                                            Promijeni sliku
+                                        </button>
+                                <!--<sup class="text-muted" style="font-size: 15px;">Software Engineer</sup>-->
+                            </h1>
+                        </div>
+                        <div class="col-sm-6">
+                            <p class="text-muted " style="font-size: 15px;margin-top: 10px;padding-top: 0px;">{{p.JobTitle}}</p>
+                
+                            <h4 class="font-profil"><label>Korisničko ime:</label>&nbsp;&nbsp;&nbsp;{{p.Username}}</h4>
+                            <h4 class="font-profil"><label>Datum rođenja:</label>&nbsp;&nbsp;&nbsp;{{p.DatumRodjenja | date: 'dd. MM. yyyy.'}}</h4>
+                            <h4 class="font-profil"><label>Mjesto rođenja:</label>&nbsp;&nbsp;&nbsp;{{p.MjestoRodjenja}}</h4>
+                            <h4 class="font-profil"><label>E-mail:</label>&nbsp;&nbsp;&nbsp;{{p.Email}}</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+          </div>
+
+
+
+          <div class="col-sm-5">
+            <div class="box box-primary">
+                <div class="box-body box-profile">
+                    <strong><i class="fa fa-book margin-r-5"></i> Edukacija</strong>
+
+                    <p class="text-muted">
+                      {{p.Edukacija}}
+                    </p>
+      
+                    <hr>
+      
+                    <strong><i class="fa fa-map-marker margin-r-5"></i> Adresa</strong>
+      
+                    <p class="text-muted">{{p.Adresa}}</p>
+      
+                    <hr>
+
+                    <strong><i class="fa fa-phone margin-r-5"></i> Telefon</strong>
+      
+                    <p class="text-muted">{{p.PhoneNr}}</p>
+
+                </div>
+                
+              </div>
+            </div>
+      </div>
+    <!--
+              <div class="row equal" *ngIf="doneLoading">
           <div class="col-sm-7">
               <div class="box box-primary">
                   <div class="box-body box-profile">
@@ -28,68 +95,63 @@
   
                       <div class="col-sm-5">
                           <h1 class="profile-username" style="font-size: 20px;font-weight: bold;margin-bottom: 0px;padding-bottom: 0px; font-family: 'Montserrat', sans-serif;">{{p.Name}} {{p.LastName}}
-                            <!--<sup class="text-muted" style="font-size: 15px;">Software Engineer</sup>-->
-                          </h1>
+                            <sup class="text-muted" style="font-size: 15px;">Software Engineer</sup>
+                        </h1>
                           
-                          <p class="text-muted " style="font-size: 15px;margin-top: 10px;padding-top: 0px;">{{p.JobTitle}}</p>
-                      
-  
-                          <h4 class="font-profil"><label>Korisničko ime:</label>&nbsp;&nbsp;&nbsp;{{p.Username}}</h4>
-                          <h4 class="font-profil"><label>Datum rođenja:</label>&nbsp;&nbsp;&nbsp;{{p.DatumRodjenja | date: 'dd. MM. yyyy.'}}</h4>
-                          <h4 class="font-profil"><label>Mjesto rođenja:</label>&nbsp;&nbsp;&nbsp;{{p.MjestoRodjenja}}</h4>
-                          <h4 class="font-profil"><label>E-mail:</label>&nbsp;&nbsp;&nbsp;{{p.Email}}</h4>
-                      </div>
+                        <p class="text-muted " style="font-size: 15px;margin-top: 10px;padding-top: 0px;">{{p.JobTitle}}</p>
+                    
+
+                        <h4 class="font-profil"><label>Korisničko ime:</label>&nbsp;&nbsp;&nbsp;{{p.Username}}</h4>
+                        <h4 class="font-profil"><label>Datum rođenja:</label>&nbsp;&nbsp;&nbsp;{{p.DatumRodjenja | date: 'dd. MM. yyyy.'}}</h4>
+                        <h4 class="font-profil"><label>Mjesto rođenja:</label>&nbsp;&nbsp;&nbsp;{{p.MjestoRodjenja}}</h4>
+                        <h4 class="font-profil"><label>E-mail:</label>&nbsp;&nbsp;&nbsp;{{p.Email}}</h4>
                     </div>
-  
-                   
-                    <br>
-  
                   </div>
-                  <!-- /.box-body -->
-                <div>
-              </div>
+
+                 
+                  <br>
+
+                </div>
+              <div>
             </div>
           </div>
-  
-          <div class="col-xs-5">
-              <div class="box box-primary">
-                  <div class="box-body box-profile">
-                      <strong><i class="fa fa-book margin-r-5"></i> Edukacija</strong>
-  
-                      <p class="text-muted">
-                        {{p.Edukacija}}
-                      </p>
-        
-                      <hr>
-        
-                      <strong><i class="fa fa-map-marker margin-r-5"></i> Adresa</strong>
-        
-                      <p class="text-muted">{{p.Adresa}}</p>
-        
-                      <hr>
-  
-                      <strong><i class="fa fa-phone margin-r-5"></i> Telefon</strong>
-        
-                      <p class="text-muted">{{p.PhoneNr}}</p>
-  
-                      <!--
-                      <hr>
-        
-                      <strong><i class="fa fa-pencil margin-r-5"></i> Vještine</strong>
-        
-                      <p>
-                        <span *ngFor="let skill of getSkills(p.Skills)" [ngClass]="skill.Icon"></span>
-                      </p>
-        
-                      <hr>
-                      -->
-      
-                  </div>
-                  <!-- /.box-body -->
-                </div>
-  
-          </div>
         </div>
+
+        <div class="col-xs-5">
+            <div class="box box-primary">
+                <div class="box-body box-profile">
+                    <strong><i class="fa fa-book margin-r-5"></i> Edukacija</strong>
+
+                    <p class="text-muted">
+                      {{p.Edukacija}}
+                    </p>
+      
+                    <hr>
+      
+                    <strong><i class="fa fa-map-marker margin-r-5"></i> Adresa</strong>
+      
+                    <p class="text-muted">{{p.Adresa}}</p>
+      
+                    <hr>
+
+                    <strong><i class="fa fa-phone margin-r-5"></i> Telefon</strong>
+      
+                    <p class="text-muted">{{p.PhoneNr}}</p>
+
+                </div>
+                
+              </div>
+
+        </div>
+      </div>
+    -->
+
+
+
+
+
+
+
         <div class="row">
             <div class="col-xs-12">
                 
@@ -98,7 +160,7 @@
                     <li class="active"><a href="#account" data-toggle="tab">Profil</a></li>
                     <li><a href="#personal-info" data-toggle="tab">Osobne informacije</a></li>
                     <li><a href="#about-me" data-toggle="tab">O meni</a></li>
-                    <li><a href="#timeline" data-toggle="tab" aria-expanded="true">Timeline</a></li>
+                    <!--<li><a href="#timeline" data-toggle="tab" aria-expanded="true">Timeline</a></li>-->
                     <li><a href="#personal-documents" data-toggle="tab">Dokumenti</a></li>
                   </ul>
                   <div class="tab-content">
@@ -325,10 +387,11 @@
                                 </div>
                               </div>
         
-                            <div [ngClass]="p.DatumRodjenja == '' ? 'form-group has-error has-feedback' : 'form-group'">
+                              <div [ngClass]="p.DatumRodjenja == '' ? 'form-group has-error has-feedback' : 'form-group'">
                                 <label for="datumRodjenja" class="col-sm-2 control-label">Datum rođenja:</label>
                                 <div class="col-sm-3">
-                                    <input class="form-control" name="datumRodjenja" [(ngModel)]="p.DatumRodjenja"  placeholder="Datum rođenja..." type="text">
+                                  <input class="form-control" [owlDateTime]="pocetak" [owlDateTimeTrigger]="pocetak" name="pocetak" [(ngModel)]="p.DatumRodjenja"  placeholder="01. 01. 2018.">
+                                  <owl-date-time [pickerType]="'calendar'" #pocetak></owl-date-time>
                                     
                                     <ng-container *ngIf="p.DatumRodjenja == ''">
                                         <label class="control-label error-label" for="inputError">
@@ -460,18 +523,16 @@
                         </div>
                     </div>
   
-  
+
+                    <!--
+                          
                     <div class="tab-pane" id="timeline">
-                          <!-- The timeline -->
                           <ul class="timeline timeline-inverse">
-                          <!-- timeline time label -->
                           <li class="time-label">
                                   <span class="bg-red">
                                   10 Feb. 2014
                                   </span>
                           </li>
-                          <!-- /.timeline-label -->
-                          <!-- timeline item -->
                           <li>
                               <i class="fa fa-envelope bg-blue"></i>
           
@@ -492,8 +553,6 @@
                               </div>
                               </div>
                           </li>
-                          <!-- END timeline item -->
-                          <!-- timeline item -->
                           <li>
                               <i class="fa fa-user bg-aqua"></i>
           
@@ -504,8 +563,6 @@
                               </h3>
                               </div>
                           </li>
-                          <!-- END timeline item -->
-                          <!-- timeline item -->
                           <li>
                               <i class="fa fa-comments bg-yellow"></i>
           
@@ -524,15 +581,11 @@
                               </div>
                               </div>
                           </li>
-                          <!-- END timeline item -->
-                          <!-- timeline time label -->
                           <li class="time-label">
                                   <span class="bg-green">
                                   3 Jan. 2014
                                   </span>
                           </li>
-                          <!-- /.timeline-label -->
-                          <!-- timeline item -->
                           <li>
                               <i class="fa fa-camera bg-purple"></i>
           
@@ -549,12 +602,12 @@
                               </div>
                               </div>
                           </li>
-                          <!-- END timeline item -->
                           <li>
                               <i class="fa fa-clock-o bg-gray"></i>
                           </li>
                           </ul>
                     </div>
+                    -->
   
   
   
