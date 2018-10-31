@@ -15,24 +15,24 @@
 
                         <div class="box-body">
                           <div [ngClass]="object.Naziv == '' ? 'form-group has-error has-feedback' : 'form-group'">
-                            <label for="naziv" class="col-sm-2 control-label">Naziv:</label>
-                            <div class="col-sm-10">
+                            <label for="naziv" class="col-sm-2 control-label">Naziv &nbsp;<i class="fa fa-map-signs" aria-hidden="true"></i></label>
+                            <div class="col-sm-3">
                               <input [(ngModel)]="object.Naziv" class="form-control" name="Naziv" placeholder="Naziv učionice..." type="text">
                               <p *ngIf="object.Naziv == ''" style="color: red;">Unesite naziv učionice!</p>
                             </div>
                           </div>
 
                           <div [ngClass]="object.Opis == '' ? 'form-group has-error has-feedback' : 'form-group'">
-                              <label for="opis" class="col-sm-2 control-label">Opis:</label>
-                              <div class="col-sm-10">
+                              <label for="opis" class="col-sm-2 control-label">Opis &nbsp;<i class="fa fa-info-circle" aria-hidden="true"></i></label>
+                              <div class="col-sm-3">
                                 <input [(ngModel)]="object.Opis" class="form-control" name="Opis" placeholder="Opis učionice..." type="text">
-                                <p *ngIf="object.Opis == ''" style="color: red;">Unesite opis učionice!</p>
+                                <p *ngIf="object.Opis == ''" style="color: red;">Unesite opis učionice! </p>
                               </div>
                           </div>
 
                           <div [ngClass]="object.Color == '' ? 'form-group has-error has-feedback' : 'form-group'">
-                              <label for="color" class="col-sm-2 control-label">Boja:</label>
-                              <div class="col-sm-10">
+                              <label for="color" class="col-sm-2 control-label">Boja &nbsp;<i class="fa fa-paint-brush" aria-hidden="true"></i></label>
+                              <div class="col-sm-3">
                                 <input type="text" [(colorPicker)]="object.Color" [style.background]="object.Color" />
                                 <p *ngIf="object.Color == ''" style="color: red;">Odaberite boju učionice!</p>
                               </div>
@@ -53,7 +53,7 @@
 
               <div class="row">
                 <div class="col-xs-2">
-                    <button type="button" class="btn btn-default" (click)="changeMode('Add', rn)"><i class="fa fa-plus" ></i> Dodaj učionicu</button>
+                    <button type="button" class="btn btn-default" (click)="changeMode('Add', rn)"><i class="	fa fa-edit" ></i> Dodaj učionicu</button>
                 </div>
                 
               </div>

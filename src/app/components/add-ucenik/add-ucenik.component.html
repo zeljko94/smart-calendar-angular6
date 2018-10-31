@@ -181,7 +181,7 @@
                   
 
                   <div [ngClass]="p.RFIDCard == '' ? 'form-group has-error has-feedback' : 'form-group'">
-                    <label for="RFIDCard" class="col-sm-2 control-label" > RFID kartice &nbsp; <i class="fa fa-credit-card" aria-hidden="true"></i></label>
+                    <label for="RFIDCard" class="col-sm-2 control-label" > RFID kartica &nbsp; <i class="fa fa-credit-card" aria-hidden="true"></i></label>
                     <div class="col-sm-3">
                       <input class="form-control" name="RFIDCard" [(ngModel)]="p.RFIDCard"  placeholder="RFID..."  (mouseup)="$event.preventDefault()" (onfocus)="numbersOnlyInputFocus($event)" (keypress)="numbersOnlyInput($event)" (keyup)="numbersOnlyKeyUp($event)" type="text" maxlength="10">
                      

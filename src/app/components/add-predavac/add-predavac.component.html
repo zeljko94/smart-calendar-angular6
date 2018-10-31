@@ -8,7 +8,7 @@
         <li class="active"><a href="#account" data-toggle="tab">Profil</a></li>
         <li><a href="#personal-info" data-toggle="tab">Osobne informacije</a></li>
         <li><a href="#about-me" data-toggle="tab">O meni</a></li>
-        <li><a href="#personal-documents" data-toggle="tab">Osobni dokumenti</a></li>
+        <li><a href="#personal-documents" data-toggle="tab">Dokumenti</a></li>
       </ul>
       <div class="tab-content">
 
@@ -29,7 +29,7 @@
                         <label for="exampleInputFile">File input</label>
                         <input #usrImgInput id="exampleInputFile" type="file" accept="image/*" (change)="userImgChange()">
                     </div>
-                    <button type="button" (click)="usrImgInput.click()" class="btn btn-default btn-lg">
+                    <button type="button" (click)="usrImgInput.click()" class="btn btn-default">
                       <i class="fa fa-camera"></i>
                     Promijeni sliku
                   </button>
@@ -37,8 +37,8 @@
               </div>
 
               <div [ngClass]="p.RFIDCard == '' ? 'form-group has-error has-feedback' : 'form-group'">
-                <label for="RFIDCard" class="col-sm-2 control-label">RFID kartice: </label>
-                <div class="col-sm-10">
+                <label for="RFIDCard" class="col-sm-2 control-label">RFID kartica &nbsp; <i class="fa fa-credit-card" aria-hidden="true"></i> </label>
+                <div class="col-sm-3">
                   <input class="form-control" name="RFIDCard" [(ngModel)]="p.RFIDCard"  placeholder="RFID..."  (mouseup)="$event.preventDefault()" (onfocus)="numbersOnlyInputFocus($event)" (keypress)="numbersOnlyInput($event)" (keyup)="numbersOnlyKeyUp($event)" type="text" maxlength="10">
                   
                   <ng-container *ngIf="p.RFIDCard == ''">
@@ -69,8 +69,8 @@
               </div>
 
               <div [ngClass]="p.RFIDPrivjesak == '' || IsRFIDPrivjesakTaken ? 'form-group has-error has-feedback' : 'form-group'">
-                <label for="RFIDPrivjesak" class="col-sm-2 control-label">RFID privjesak: </label>
-                <div class="col-sm-10">
+                <label for="RFIDPrivjesak" class="col-sm-2 control-label">RFID privjesak &nbsp; <i class="fa fa-tag" aria-hidden="true"></i></label>
+                <div class="col-sm-3">
                   <input class="form-control" name="RFIDPrivjesak" [(ngModel)]="p.RFIDPrivjesak"  placeholder="RFID..."  (mouseup)="$event.preventDefault()" (onfocus)="numbersOnlyInputFocus($event)" (keypress)="numbersOnlyInput($event)" (keyup)="numbersOnlyKeyUp($event)" type="text" maxlength="10">
                   
                   <ng-container *ngIf="p.RFIDPrivjesak == ''">
@@ -101,7 +101,7 @@
 
               <div [ngClass]="p.Name == '' ? 'form-group has-error has-feedback' : 'form-group'">
                 <label for="ime" class="col-sm-2 control-label">Ime: </label>
-                <div class="col-sm-10">
+                <div class="col-sm-4">
                   <input class="form-control" name="ime" [(ngModel)]="p.Name"  placeholder="Ime..." type="text">
                   
                   <ng-container *ngIf="p.Name == ''">
@@ -116,7 +116,7 @@
 
               <div [ngClass]="p.LastName == '' ? 'form-group has-error has-feedback' : 'form-group'">
                 <label for="prezime" class="col-sm-2 control-label">Prezime: </label>
-                <div class="col-sm-10">
+                <div class="col-sm-4">
                   <input class="form-control" name="prezime" [(ngModel)]="p.LastName"  placeholder="Prezime..." type="text">
 
                   <ng-container *ngIf="p.LastName == ''">
@@ -131,7 +131,7 @@
 
               <div [ngClass]="p.Username == '' || IsUsernameTaken ? 'form-group has-error has-feedback' : 'form-group'">
                 <label for="inputName" class="col-sm-2 control-label">Korisničko ime: </label>
-                <div class="col-sm-10">
+                <div class="col-sm-4">
                   <input class="form-control" name="username" [(ngModel)]="p.Username" (input)="usernameChange()"  placeholder="Korisničko ime..." type="text">
 
                   <ng-container *ngIf="p.Username == ''">
@@ -155,7 +155,7 @@
 
               <div [ngClass]="(p.Email == '' || (p.Email && !isValidEmail()) || (p.Email && IsEmailTaken)) ? 'form-group has-error has-feedback' : 'form-group'">
                 <label for="inputEmail" class="col-sm-2 control-label">E-mail:</label>
-                <div class="col-sm-10">
+                <div class="col-sm-4">
                   <input class="form-control" name="email" [(ngModel)]="p.Email" (input)="emailChange()" placeholder="E-mail..." type="email">
                   
                   <ng-container *ngIf="p.Email == ''">
@@ -187,7 +187,7 @@
 
               <div [ngClass]="p.Password == '' || (p.Password != '' && (p.Password != p.RePassword)) ? 'form-group has-error has-feedback' : 'form-group'">
                 <label for="inputExperience" class="col-sm-2 control-label">Lozinka:</label>
-                <div class="col-sm-10">
+                <div class="col-sm-4">
                   <input class="form-control" name="password" [(ngModel)]="p.Password" placeholder="Lozinka..." type="password">
 
                   <ng-container *ngIf="p.Password == ''">
@@ -211,7 +211,7 @@
 
               <div [ngClass]="p.RePassword == '' || (p.RePassword != '' && (p.RePassword != p.Password))  ? 'form-group has-error has-feedback' : 'form-group'">
                 <label for="inputSkills" class="col-sm-2 control-label">Ponovi lozinku:</label>
-                <div class="col-sm-10">
+                <div class="col-sm-4">
                   <input class="form-control" name="rePassword" [(ngModel)]="p.RePassword" placeholder="Ponovi lozinku..." type="password">
                   
                   <ng-container *ngIf="p.RePassword == ''">
@@ -240,7 +240,7 @@
             <form class="form-horizontal">
                 <div  [ngClass]="p.Adresa == '' ? 'form-group has-error has-feedback' : 'form-group'">
                     <label for="adresa" class="col-sm-2 control-label">Adresa:</label>
-                    <div class="col-sm-10">
+                    <div class="col-sm-4">
                       <input class="form-control" name="adresa" [(ngModel)]="p.Adresa" placeholder="Adresa..." type="text">
                       
                       <ng-container *ngIf="p.Adresa == ''">
@@ -258,7 +258,7 @@
                                                            
                   <div [ngClass]="p.DatumRodjenja == '' ? 'form-group has-error has-feedback' : 'form-group'">
                       <label for="datumRodjenja" class="col-sm-2 control-label">Datum rođenja:</label>
-                      <div class="col-sm-10">
+                      <div class="col-sm-4">
                         <input class="form-control" [owlDateTime]="pocetak" [owlDateTimeTrigger]="pocetak" name="pocetak" [(ngModel)]="p.DatumRodjenja"  placeholder="01. 01. 2018.">
                         <owl-date-time [pickerType]="'calendar'" #pocetak></owl-date-time>
                           
@@ -276,7 +276,7 @@
 
                 <div [ngClass]="p.MjestoRodjenja == '' ? 'form-group has-error has-feedback' : 'form-group'">
                   <label for="mjestoRodjenja" class="col-sm-2 control-label">Mjesto rođenja: </label>
-                  <div class="col-sm-10">
+                  <div class="col-sm-4">
                     <input class="form-control" name="mjestoRodjenja" [(ngModel)]="p.MjestoRodjenja"  placeholder="Mjesto rođenja..." type="text">
                     
                     <ng-container *ngIf="p.MjestoRodjenja == ''">
@@ -292,7 +292,7 @@
 
                 <div class="form-group">
                     <label for="phoneNr" class="col-sm-2 control-label">Broj mobitela: </label>
-                    <div class="col-sm-10">
+                    <div class="col-sm-4">
                       <input class="form-control" name="phoneNr" [(ngModel)]="p.PhoneNr" placeholder="+387 63 111 222" type="text">
                     </div>
                 </div>
@@ -301,7 +301,7 @@
                 
                 <div class="form-group">
                     <label for="spol" class="col-sm-2 control-label">Spol:</label>
-                    <div class="col-sm-10" style="margin-top: 7px;">
+                    <div class="col-sm-4" style="margin-top: 7px;">
                       <label style="margin-right: 10px;"><input type="radio" name="spol" [(ngModel)]="p.Spol" value="M" />&nbsp;Muško</label>
                       <label><input type="radio" name="spol" [(ngModel)]="p.Spol" value="Ž" />&nbsp;Žensko</label>
                     </div>
@@ -315,7 +315,7 @@
             
               <div class="form-group">
                   <label for="edukacija" class="col-sm-2 control-label">Edukacija:</label>
-                  <div class="col-sm-10">
+                  <div class="col-sm-4">
                       <input type="text" class="form-control" name="edukacija" [(ngModel)]="p.Edukacija" rows="6" placeholder="Edukacija..." />
                   </div>
               </div>
@@ -324,7 +324,7 @@
                               
               <div class="form-group">
                   <label for="jobTitle" class="col-sm-2 control-label">Naslov posla:</label>
-                  <div class="col-sm-10">
+                  <div class="col-sm-4">
                       <input type="text" class="form-control" name="jobTitle" [(ngModel)]="p.JobTitle" rows="6" placeholder="Naslov posla..." />
                   </div>
               </div>
@@ -333,7 +333,7 @@
                               
               <div class="form-group">
                   <label for="about" class="col-sm-2 control-label">O meni:</label>
-                  <div class="col-sm-10">
+                  <div class="col-sm-4">
                       <textarea class="form-control" name="about" [(ngModel)]="p.About" rows="6" placeholder="Unesite text..."></textarea>
                   </div>
               </div>
@@ -342,7 +342,7 @@
                 
               <div class="form-group">
                   <label for="skills" class="col-sm-2 control-label">Vještine:</label>
-                  <div class="col-sm-10">
+                  <div class="col-sm-7">
                       <app-skill-select #skillSelect></app-skill-select>
                   </div>
               </div>
@@ -350,7 +350,7 @@
                 
               <div class="form-group">
                   <label for="additionalInfo" class="col-sm-2 control-label">Dodatne informacije:</label>
-                  <div class="col-sm-10">
+                  <div class="col-sm-4">
                       <textarea class="form-control" name="additionalInfo" [(ngModel)]="p.AdditionalInfo" rows="3" placeholder="Unesite text..."></textarea>
                   </div>
               </div>
@@ -369,8 +369,8 @@
           
                       <div class="info-box-content">
                         <span class="info-box-text"><u>{{doc.FileName}}</u></span>
-                        <a href="#" style="margin-right: 20px;">Preuzmi</a>
-                        <a href="#">Preview</a>
+                        <a href="#" style="margin-right: 20px;"><i class="fa fa-download" aria-hidden="true"></i> &nbsp;   Preuzmi</a>
+                        <a href="#"><i class="fa fa-search" aria-hidden="true"></i> &nbsp; Preview</a>
                       </div>
                     </div>
                   </div>
@@ -383,8 +383,8 @@
                         <label for="exampleInputFile">File input</label>
                         <input #usrDocInput id="exampleInputFileDoc" type="file" (change)="personalDocAdd()" multiple>
                     </div>
-                    <button type="button" (click)="usrDocInput.click()" class="btn btn-default btn-lg">
-                      <i class="fa fa-plus"></i>
+                    <button type="button" (click)="usrDocInput.click()" class="btn btn-default">
+                        <i class="fa fa-files-o" aria-hidden="true"></i>&nbsp;
                     Dodaj dokument
                   </button>
                 </div>
