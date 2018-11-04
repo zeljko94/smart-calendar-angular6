@@ -6,6 +6,7 @@ import { UserService } from '../../../services/rest/user.service';
 import { ForumService } from '../../../services/forum.service';
 import { ActivatedRoute } from '@angular/router';
 import { NotificationService } from '../../../services/notification.service';
+import { DualListComponent } from 'angular-dual-listbox';
 
 @Component({
   selector: 'app-admin-forum-details',
@@ -15,7 +16,10 @@ import { NotificationService } from '../../../services/notification.service';
 export class AdminForumDetailsComponent implements OnInit, OnDestroy {
 
 
-  forum: any = {};
+  forum: any = {
+    source: [],
+    destination: []
+  };
   id: any;
   isLoaded: boolean = false;
   comment: any = {};
@@ -33,6 +37,19 @@ export class AdminForumDetailsComponent implements OnInit, OnDestroy {
     private forumService: ForumService,
     private sanitizer: SanitizerService
   ) { }
+  
+  format = { add: 'Dodaj', remove: 'Ukloni', all: 'Označi sve', none: 'Poništi',
+  direction: DualListComponent.LTR, draggable: true, locale: 'en' };
+
+
+dualListDisplay(o){
+return o.Name + " " + o.LastName  + " - " + o.ID;
+}
+   
+destinationChange(ev){
+this.forum.SudioniciID = ev.map(e => e.ID);
+}
+
 
   ngOnInit() {
     this.loggedID = this.auth.getID();
@@ -43,6 +60,7 @@ export class AdminForumDetailsComponent implements OnInit, OnDestroy {
       if(this.id){
         this.forumService.getById(this.id)
           .subscribe(data => {
+            console.log(data);
             this.swal.hideLoading();
             this.isLoaded = true;
             this.forum = data.Data;
