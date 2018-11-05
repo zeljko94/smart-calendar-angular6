@@ -104,7 +104,7 @@
                   <div class="col-xs-1"></div>
                   <div class="col-xs-10">
 
-                    <h1  *ngIf="nastavneCjeline.length <= 0" class="text-danger text-center">Nema unesenih nastavnih cjelina!</h1>
+                    <h1  *ngIf="nastavneCjeline.length <= 0" class="text-danger text-center font-profil">Nema unesenih nastavnih cjelina!</h1>
                     <ul class="todo-list"  *ngIf="nastavneCjeline.length > 0">
                         <li *ngFor="let nc of nastavneCjeline; let i = index">
                           <span class="text" style="padding-right: 20px;">{{i+1}}.</span>
@@ -160,7 +160,7 @@
                 <div class="row">
                   <div class="col-xs-12">
 
-                      <h1 *ngIf="obavijesti.length <= 0" class="text-danger text-center">Nema obavijesti za odabrani tečaj!</h1>
+                      <h1 *ngIf="obavijesti.length <= 0" class="text-danger text-center font-profil">Nema obavijesti za odabrani tečaj!</h1>
                       <div class="post clearfix" style="margin-left: 20px;" *ngFor="let o of obavijesti">
                           <div class="user-block">
                             <img class="img-circle img-bordered-sm" [src]="o.Kreator.ProfileImage.DataUrl">
@@ -251,7 +251,7 @@
                 </div>
 
               <div class="box-body">
-                <h3 *ngIf="termini.length <= 0" class="text-danger text-center">Nema unesenih termina za odabrani tečaj.</h3>
+                <h3 *ngIf="termini.length <= 0" class="text-danger text-center font-profil">Nema unesenih termina za odabrani tečaj!</h3>
                 <table *ngIf="termini.length > 0" class="table table-bordered table-striped table-hover">
                   <thead>
                     <tr >
