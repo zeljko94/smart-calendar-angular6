@@ -7,12 +7,12 @@
   <div class="content-wrapper">
       <!-- Content Header (Page header) -->
       <section class="content-header">
-        <h1>
-          Calendar
-          <small>Control panel</small>
+        <h1 class="font-opcenito">
+          Rasporedi
+          <small>Upravljačka ploča</small>
         </h1>
         <ol class="breadcrumb">
-          <li><a [routerLink]="['/predavac/dashboard']"><i class="fa fa-dashboard"></i> Home</a></li>
+          <li><a [routerLink]="['/predavac/dashboard']"><i class="fa fa-dashboard"></i> Nadzorna ploča</a></li>
           <li class="active">Rasporedi</li>
         </ol>
       </section>
@@ -32,19 +32,20 @@
             <div class="box box-default">
               <div class="box-body no-padding">
 
-                  <div class="row">
-                      <div id="brisiEventContainer" class="col-xs-12" style="border: 3px dashed red;height: 100px;margin-left: 20px;">
-                        <p class="text-center lead text-danger">Povucite event OVDJE za brisanje...</p>
-                      </div>
-                  </div>
+                  <div class="row" style="padding:30px;">
+                    <div id="brisiEventContainer" class="col-xs-12, droparea" style="border: 2px dashed #8F2828;border-radius: 10px;height: 100px; padding-left:40px; padding-right:40px; padding-top:30px;">
+                     <p class="tekst-event"><i class="fa fa-trash " aria-hidden="true"></i><br>Ispusti za brisanje</p>
+                    </div>
+                </div>
 
                   
                 <div class="row">
                     <div class="col-xs-12" style="height: 50px;margin-left: 20px;margin-top: 10px;">
                       <div class="form-group">
-                        <input type="checkbox" name="showOnlyMine" [checked]="showOnlyMine" (change)="showOnlyMineOnChange()" />
-                        &nbsp;&nbsp;
-                        <label>Prikaži samo moje termine</label>
+                        <input type="checkbox" name="showOnlyMine" [checked]="showOnlyMine" (change)="showOnlyMineOnChange()"/>
+                        &nbsp; &nbsp;
+                       <label>Prikaži samo moje termine</label>
+                        
                       </div>
                     </div>
                 </div>

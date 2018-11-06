@@ -126,7 +126,7 @@ export class LeftsideComponent implements OnInit {
   getPredavacNavItems(){
     this.navigationItems = [
       {
-        text: "Dashboard",
+        text: "Nadzorna ploča",
         link: "/predavac/dashboard",
         icon: "fa fa-dashboard",
         active: false
@@ -176,7 +176,7 @@ export class LeftsideComponent implements OnInit {
   getUcenikNavItems(){
     this.navigationItems = [
       {
-        text: "Dashboard",
+        text: "Nadzorna ploča",
         link: "/ucenik/dashboard",
         icon: "fa fa-dashboard",
         active: false
