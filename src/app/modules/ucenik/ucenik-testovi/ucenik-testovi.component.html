@@ -2,13 +2,13 @@
 <div class="content-wrapper" style="min-height: 600px;">
   <!-- Content Header (Page header) -->
   <section class="content-header">
-      <h1>
+      <h1 class="font-opcenito">
         Online testovi
         <small>Online testiranje</small>
       </h1>
       
       <ol class="breadcrumb">
-          <li><a [routerLink]="['/ucenik/dashboard']"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+          <li><a [routerLink]="['/ucenik/dashboard']"><i class="fa fa-dashboard"></i> Nadzorna ploča</a></li>
           <li class="active">Online testovi</li>
       </ol>
     </section>
@@ -22,9 +22,10 @@
 
 
       <div class="row">
-        <div class="col-xs-12">
-            <div class="input-group input-group-lg">
-                <input [(ngModel)]="search" (keyup)="applyFilters()" class="form-control" placeholder="Search..." type="text">
+          <div class="col-xs-9"></div>
+        <div class="col-xs-3">
+            <div class="input-group">
+                <input [(ngModel)]="search" (keyup)="applyFilters()" class="form-control" placeholder="Pretraži..." type="text">
                 <span class="input-group-addon"><i class="fa fa-search search-icon"></i></span>
             </div>
         </div>
@@ -36,15 +37,12 @@
 
 
       <div class="box">
-        <div class="box-header with-border">
-          <h1 class="box-title" style="font-size: 25px;">Online testovi</h1>  
-        </div>
-      <!-- /.box-header -->
+             <!-- /.box-header -->
       <div class="box-body">
         <table id="razineNastaveTable" class="table table-bordered table-hover table-striped">
               <tbody>
                 <tr>
-                    <th class="text-center">#</th>
+                    <th class="text-center">Br.</th>
                     <th>Naziv testa</th>
                     <th>Opis testa</th>
                     <th>Jezik</th>
@@ -62,7 +60,7 @@
             <td></td>
             <td>
                 <div class="btn-group">
-                    <button (click)="$event.stopPropagation();zapocni(t.ID)" type="button" class="btn btn-success btn-lg"><i class="fa fa-play"></i>&nbsp; Započni test</button>
+                    <button (click)="$event.stopPropagation();zapocni(t.ID)" type="button" class="btn btn-success"><i class="fa fa-play"></i>&nbsp; Započni test</button>
                 </div>
             </td>
           </tr>
@@ -84,14 +82,14 @@
 
     <div class="box">
       <div class="box-header with-border">
-        <h1 class="box-title" style="font-size: 25px;">Rezultati završenih testova</h1>  
+        <h1 class="box-title font-opcenito">Rezultati završenih testova</h1>  
       </div>
     <!-- /.box-header -->
     <div class="box-body">
       <table id="razineNastaveTable" class="table table-bordered table-hover table-striped">
             <tbody>
               <tr>
-                  <th class="text-center">#</th>
+                  <th class="text-center">Br.</th>
                   <th>Naziv testa</th>
                   <th>Jezik</th>
                   <th>Vrijeme trajanja</th>
@@ -104,11 +102,11 @@
           <td>{{rt.Naziv}}</td>
           <td [innerHTML]="rt.Jezik"></td>
           <td>{{rt.Vrijeme}}</td>
-          <td [ngClass]="rt.Bodovi >= 80 ? 'success' : 'danger'">{{rt.Bodovi}}</td>
+          <td [ngClass]="rt.Bodovi >= 80 ? 'success' : 'danger'" class="text-center"><b>{{rt.Bodovi}}</b></td>
           <td>{{rt.Datum}}</td>
           <td>
               <div class="btn-group">
-                  <button (click)="$event.stopPropagation();detalji(rt.ID)" type="button" class="btn btn-primary btn-lg"><i class="fa fa-info-circle"></i>&nbsp; Detalji</button>
+                  <button (click)="$event.stopPropagation();detalji(rt.ID)" type="button" class="btn btn-primary"><i class="fa fa-info-circle"></i>&nbsp; Detalji</button>
               </div>
           </td>
         </tr>

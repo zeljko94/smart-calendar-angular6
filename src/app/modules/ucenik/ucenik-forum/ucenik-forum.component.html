@@ -6,13 +6,13 @@
 <div class="content-wrapper" style="min-height: 600px;">
     <!-- Content Header (Page header) -->
     <section class="content-header">
-        <h1>
+        <h1 class="font-opcenito">
           Pregled foruma
           <!--<small>Dodavanje predavača</small>-->
         </h1>
         
         <ol class="breadcrumb">
-            <li><a [routerLink]="['/admin/dashboard']"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+            <li><a [routerLink]="['/admin/dashboard']"><i class="fa fa-dashboard"></i> Nadzorna ploča</a></li>
             <li class="active">Forumi</li>
         </ol>
       </section>
@@ -46,9 +46,7 @@
   
               <!-- OSNOVI DETALJI -->
               <div class="box">
-                  <div class="box-header with-border">
-                    <h1 class="box-title" style="margin-bottom: 0px;font-size: 37px;font-weight: bold;">Forumi</h1>  
-                  </div>
+                 
                 <!-- /.box-header -->
                 <div class="box-body">
                   <div class="row">
@@ -56,8 +54,8 @@
                       
                       <table class="table table-striped table-hover table-bordered">
                         <thead>
-                          <tr style="font-size: 30px;">
-                            <th class="text-center" style="width: 10%;">#</th>
+                          <tr>
+                            <th class="text-center" style="width: 10%;">Br.</th>
                             <th>Naslov</th>
                             <th>Kreator</th>
                             <th>Datum kreiranja</th>
@@ -65,14 +63,14 @@
                           </tr>
                         </thead>
 
-                        <tbody style="font-size: 25px;">
+                        <tbody>
                             <tr *ngFor="let f of forumi; let i = index">
                               <td class="text-center" style="width: 10%;">{{i+1}}.</td>
                               <td>{{f.Naslov}}</td>
                               <td>{{f.Kreator.Name}} {{f.Kreator.LastName}}</td>
                               <td>{{f.Datum | date: 'dd. MM. yyyy.'}}</td>
                               <td>
-                                <button class="btn btn-lg btn-primary" (click)="details(f.ID)">
+                                <button class="btn btn-primary" (click)="details(f.ID)">
                                   <i class="fa fa-info-circle"></i>
                                   &nbsp;
                                   Pregled foruma
