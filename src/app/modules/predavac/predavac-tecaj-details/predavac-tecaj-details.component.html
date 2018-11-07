@@ -24,13 +24,13 @@
 <div class="content-wrapper" style="min-height: 600px;">
   <!-- Content Header (Page header) -->
   <section class="content-header">
-      <h1>
+      <h1 class="font-opcenito">
         Detaljan pregled tečaja
         <!--<small>Dodavanje predavača</small>-->
       </h1>
       
       <ol class="breadcrumb">
-          <li><a [routerLink]="['/admin/dashboard']"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+          <li><a [routerLink]="['/admin/dashboard']"><i class="fa fa-dashboard"></i> Nadzorna ploča</a></li>
           <li><a [routerLink]="['/admin/tecajevi']"><i class="fa fa-language"></i> Tečajevi</a></li>
           <li class="active">Detaljan pregled tečaja</li>
       </ol>
@@ -72,16 +72,16 @@
             <!-- OSNOVNI DETALJI -->
             <div class="box">
                 <div class="box-header with-border text-center">
-                  <h1 class="box-title" style="margin-bottom: 0px;font-size: 37px;font-weight: bold;">{{tecaj.Naziv}}</h1>  
+                  <h1 class="box-title" style="margin-bottom: 0px;font-size:20px;font-weight: bold; font-family: 'Montserrat', sans-serif;">{{tecaj.Naziv}}</h1> 
                 </div>
               <!-- /.box-header -->
               <div class="box-body">
                 <div class="row">
                   <div class="col-xs-12 text-center">
-                      <h2>Predavač:<br/> <img [src]="tecaj.Predavac.ProfileImage.DataUrl" class="profile-user-img img-responsive img-circle" style="margin-top: 20px;width: 200px; height: 200px;"/><b><br>
-                        {{tecaj.Predavac.Name}} {{tecaj.Predavac.LastName}}</b></h2><br>
-                      <h2>Jezik: <br><span [ngClass]="tecaj.Skill.Icon"></span>&nbsp;<b>{{tecaj.Skill.Name}}</b></h2><br>
-                      <h2 style="margin-top: 0px;">Razina: <br><b>{{tecaj.NastavaRazina.Naziv}}</b></h2><br>
+                    <img [src]="tecaj.Predavac.ProfileImage.DataUrl" class="profile-user-img img-responsive img-circle" style="margin-top: 20px;width: 200px; height: 200px;"/><b style="font-size:18px;"><br>
+                      {{tecaj.Predavac.Name}} {{tecaj.Predavac.LastName}}</b><br>
+                      <br><span [ngClass]="tecaj.Skill.Icon"></span>&nbsp;<b>{{tecaj.Skill.Name}}</b><br>
+                      <span style="margin-top: 0px;"><br><b>{{tecaj.NastavaRazina.Naziv}}</b></span><br>
                   </div>
                 </div>
 
@@ -97,15 +97,15 @@
             <!-- NASTAVNE CJELINE -->
             <div class="box">
                 <div class="box-header with-border text-center">
-                  <h1 class="box-title" style="margin-bottom: 0px;font-size: 37px;font-weight: bold;">Nastavne cjeline tečaja</h1>  
+                  <h1 class="box-title font-opcenito" style="margin-bottom: 0px;font-size:18px;font-weight: bold;">Nastavne cjeline tečaja</h1>  
                 </div>
               <div class="box-body">
                 <div class="row">
                   <div class="col-xs-1"></div>
                   <div class="col-xs-10">
 
-                    <h1  *ngIf="nastavneCjeline.length <= 0" class="text-danger text-center">Nema unesenih nastavnih cjelina!</h1>
-                    <ul class="todo-list" style="font-size: 25px;" *ngIf="nastavneCjeline.length > 0">
+                    <h1  *ngIf="nastavneCjeline.length <= 0" class="text-danger text-center font-profil">Nema unesenih nastavnih cjelina!</h1>
+                    <ul class="todo-list" *ngIf="nastavneCjeline.length > 0">
                         <li *ngFor="let nc of nastavneCjeline; let i = index">
                           <span class="text" style="padding-right: 20px;">{{i+1}}.</span>
                           <!-- todo text -->
@@ -126,13 +126,13 @@
                     <form class="form-horizontal">
                         <div class="form-group margin-bottom-none">
                           <div class="col-sm-9">
-                            <input name="nastavnaCjelinaNaziv" [(ngModel)]="novaNastavnaCjelina.Naziv" class="form-control input-lg" placeholder="Naziv nastavne cjeline...">
+                            <input name="nastavnaCjelinaNaziv" [(ngModel)]="novaNastavnaCjelina.Naziv" class="form-control" placeholder="Naziv nastavne cjeline...">
                           </div>
                           <div class="col-sm-3">
-                            <button (click)="dodajNastavnuCjelinu()" type="submit" class="btn btn-primary pull-right btn-block btn-lg">
+                            <button (click)="dodajNastavnuCjelinu()" type="submit" class="btn btn-primary pull-right btn-block">
                               <i class="fa fa-plus"></i>
                               &nbsp;&nbsp;
-                              Dodaj!
+                              Dodaj
                             </button>
                           </div>
                         </div>
@@ -154,13 +154,13 @@
             <!-- OBAVIJESTI -->
             <div class="box">
                 <div class="box-header with-border text-center">
-                  <h1 class="box-title" style="margin-bottom: 0px;font-size: 37px;font-weight: bold;">Obavijesti</h1>  
+                  <h1 class="box-title font-opcenito" style="margin-bottom: 0px;font-weight: bold;">Obavijesti</h1>  
                 </div>
               <div class="box-body">
                 <div class="row">
                   <div class="col-xs-12">
 
-                      <h1 *ngIf="obavijesti.length <= 0" class="text-danger text-center">Nema obavijesti za odabrani tečaj!</h1>
+                      <h1 *ngIf="obavijesti.length <= 0" class="text-danger text-center font-profil">Nema obavijesti za odabrani tečaj!</h1>
                       <div class="post clearfix" style="margin-left: 20px;" *ngFor="let o of obavijesti">
                           <div class="user-block">
                             <img class="img-circle img-bordered-sm" [src]="o.Kreator.ProfileImage.DataUrl">
@@ -169,21 +169,21 @@
 
                                   
                           <div *ngIf="(loggedID == o.Kreator.ID) || auth.isAdmin() || auth.isPredavac()" class="pull-right">
-                              <button class="btn btn-lg btn-success" style="margin-right: 20px;">
+                              <button class="btn btn-success" style="margin-right: 20px;">
                                 <i class="fa fa-edit"></i>
                                 &nbsp;
-                                Edit
+                                Uredi
                               </button>
-                              <button (click)="brisiObavijest(o.ID)" class="btn btn-lg btn-danger">
+                              <button (click)="brisiObavijest(o.ID)" class="btn btn-danger">
                                 <i class="fa fa-trash"></i>
                                 &nbsp;
                                 Briši
                               </button>
                             </div>
                                 </span>
-                            <span class="description">Sent a message - {{o.Datum | date: 'dd. MM. yyyy. HH:mm'}}</span>
+                            <span class="description">{{o.Datum | date: 'dd. MM. yyyy. HH:mm'}}</span>
                           </div>
-                          <p style="font-size: 20px;word-break: break-all;white-space: normal;">
+                          <p style="word-break: break-all;white-space: normal;">
                             {{o.Poruka}}
                           </p>
                         </div>
@@ -192,13 +192,13 @@
                         <form class="form-horizontal">
                             <div class="form-group margin-bottom-none">
                               <div class="col-sm-9">
-                                <input name="novaObavijestPoruka" [(ngModel)]="novaObavijest.Poruka" class="form-control input-lg" placeholder="Nova obavijest...">
+                                <input name="novaObavijestPoruka" [(ngModel)]="novaObavijest.Poruka" class="form-control" placeholder="Nova obavijest...">
                               </div>
                               <div class="col-sm-3">
-                                <button (click)="dodajObavijest()" class="btn btn-primary pull-right btn-block btn-lg">
+                                <button (click)="dodajObavijest()" class="btn btn-primary pull-right btn-block ">
                                   <i class="fa fa-send"></i>
                                   &nbsp;&nbsp;
-                                  Objavi!
+                                  Objavi
                                 </button>
                               </div>
                             </div>
@@ -217,20 +217,20 @@
             
             <!-- SUDIONICI -->
             <div class="box">
-                <div class="box-header with-border text-center">
-                  <h1 class="box-title" style="margin-bottom: 0px;font-size: 37px;font-weight: bold;">Polaznici</h1>  
-                  <hr>
-                </div>
+              <div class="box-header with-border text-center">
+                <h1 class="box-title font-opcenito" style="margin-bottom: 0px;;font-weight: bold;">Polaznici</h1>  
+                <hr>
+              </div>
 
               <div class="box-body">
                 <div class="row todo-list" *ngFor="let r of subArray(tecaj.Sudionici, 6)">
                     <div class="col-xs-2 text-center" *ngFor="let s of r">
                         <h3>
                           <img [src]="s.ProfileImage.DataUrl" class="profile-user-img img-responsive img-circle" style="width: 150px; height: 150px;"/>
-                          <b><br>{{s.Name}} {{s.LastName}}</b>
+                          <span class="font-opcenito" style="font-size: 14px;"><br>{{s.Name}} {{s.LastName}}</span>
                         </h3>
                         
-                        <div (click)="deleteSudionik(s.ID)" class="tools text-danger" style="font-size: 20px;cursor: pointer;">
+                        <div (click)="deleteSudionik(s.ID)" class="tools text-danger" style="cursor: pointer; font-size: 12px;">
                             <i class="fa fa-times"></i>
                             Ukloni
                         </div>
@@ -245,49 +245,49 @@
 
             <!-- ODRŽANI TERMINI -->
             <div class="box">
-                <div class="box-header with-border text-center">
-                  <h1 class="box-title" style="margin-bottom: 0px;font-size: 37px;font-weight: bold;">Održani sati</h1>  
-                  <hr>
-                </div>
-
-              <div class="box-body">
-                <h3 *ngIf="termini.length <= 0" class="text-danger text-center">Nema unesenih termina za odabrani tečaj.</h3>
-                <table *ngIf="termini.length > 0" class="table table-bordered table-striped table-hover">
-                  <thead>
-                    <tr style="font-size: 30px;">
-                      <th  class="text-center" style="width: 12%;">#</th>
-                      <th>Naslov</th>
-                      <th>Datum</th>
-                      <th>Vrijeme</th>
-                      <th>Učionica</th>
-                      <th></th>
-                    </tr>
-                  </thead>
-
-                  <tbody>
-                      <tr style="font-size: 25px;" *ngFor="let t of termini; let i = index">
-                        <td class="text-center" style="width: 12%;">{{i+1}}.</td>
-                        <td>{{t.Naslov}}</td>
-                        <td>{{t.PocetniDatum | date: 'dd. MM. yyyy.'}}</td>
-                        <td>{{t.PocetniDatum | date: 'HH:mm'}}h - {{t.ZavrsniDatum | date: 'HH:mm'}}</td>
-                        <td>{{t.Ucionica.Naziv}}</td>
-                        <td class="text-center">
-                          <button (click)="details(t.ID)" class="btn btn-lg btn-primary">
-                            <i class="fa fa-info-circle"></i>
-                            &nbsp;
-                            Pregled detalja
-                          </button>
-                        </td>
-                      </tr>
-                  </tbody>
-                </table>
-
-                <button class="btn btn-lg btn-primary" (click)="dodajTermin()">
-                  <i class="fa fa-plus"></i>
-                  &nbsp;
-                  Dodaj termin
-                </button>
+              <div class="box-header with-border text-center">
+                <h1 class="box-title font-opcenito" style="margin-bottom: 0px;font-weight: bold;">Održani sati</h1>  
+                <hr>
               </div>
+
+            <div class="box-body">
+              <h3 *ngIf="termini.length <= 0" class="text-danger text-center font-profil">Nema unesenih termina za odabrani tečaj!</h3>
+              <table *ngIf="termini.length > 0" class="table table-bordered table-striped table-hover">
+                <thead>
+                  <tr >
+                    <th  class="text-center" style="width: 12%;">Br.</th>
+                    <th>Naslov</th>
+                    <th>Datum</th>
+                    <th>Vrijeme</th>
+                    <th>Učionica</th>
+                    <th></th>
+                  </tr>
+                </thead>
+
+                <tbody>
+                    <tr *ngFor="let t of termini; let i = index">
+                      <td class="text-center" style="width: 12%;"><b>{{i+1}}.</b></td>
+                      <td>{{t.Naslov}}</td>
+                      <td>{{t.PocetniDatum | date: 'dd. MM. yyyy.'}}</td>
+                      <td>{{t.PocetniDatum | date: 'HH:mm'}}h - {{t.ZavrsniDatum | date: 'HH:mm'}}</td>
+                      <td>{{t.Ucionica.Naziv}}</td>
+                      <td class="text-center">
+                        <button (click)="details(t.ID)" class="btn btn-primary">
+                          <i class="fa fa-info-circle"></i>
+                          &nbsp;
+                          Pregled detalja
+                        </button>
+                      </td>
+                    </tr>
+                </tbody>
+              </table>
+
+              <button class="btn btn-primary" (click)="dodajTermin()">
+                <i class="fa fa-plus"></i>
+                &nbsp;
+                Dodaj termin
+              </button>
+            </div>
 
               <div class="box-footer">
                 <!--<app-pagination #paginator></app-pagination>-->

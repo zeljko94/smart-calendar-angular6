@@ -2,16 +2,17 @@
 <div class="content-wrapper" style="min-height: 600px;">
     <!-- Content Header (Page header) -->
     <section class="content-header">
-        <h1>
+        <h1 class="font-opcenito">
           Dodaj učenika
           <!--<small>Dodavanje predavača</small>-->
           
-          <button class="btn btn-success" (click)="spremi()" style="margin-right: 10px;" type="button"><i class="fa fa-save"></i>&nbsp; Spremi predavača</button>
-          <button class="btn btn-danger" (click)="reset()" type="button"><i class="fa fa-undo"></i>&nbsp; Reset</button>
-        </h1>
+        </h1><br>
+        
+        <button class="btn btn-success" (click)="spremi()" style="margin-right: 10px;" type="button"><i class="fa fa-save"></i>&nbsp; Spremi predavača</button>
+        <button class="btn btn-danger" (click)="reset()" type="button"><i class="fa fa-undo"></i>&nbsp; Poništi</button>
         
         <ol class="breadcrumb">
-            <li><a [routerLink]="['/predavac/dashboard']"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+            <li><a [routerLink]="['/predavac/dashboard']"><i class="fa fa-dashboard"></i> Nadzorna ploča</a></li>
             <li><a [routerLink]="['/predavac/predavaci']"><i class="fa fa-users"></i> Učenici</a></li>
             <li class="active">Dodaj učenika</li>
         </ol>

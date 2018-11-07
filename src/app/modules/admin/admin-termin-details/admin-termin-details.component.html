@@ -27,13 +27,14 @@
         <h1 class="font-opcenito">
           Detaljan pregled održanog sata
           &nbsp;
-          <button (click)="spremi()" class="btn btn-success">
-            <i class="fa fa-save"></i>
-            &nbsp;
-            Spremi izmjene
-          </button>
+          
           <!--<small>Dodavanje predavača</small>-->
-        </h1>
+        </h1><br>
+        <button (click)="spremi()" class="btn btn-success">
+          <i class="fa fa-save"></i>
+          &nbsp;
+          Spremi izmjene
+        </button>
         
         <ol class="breadcrumb">
             <li><a [routerLink]="['/admin/dashboard']"><i class="fa fa-dashboard"></i> Nadzorna ploča</a></li>
@@ -100,7 +101,7 @@
 
                 <div class="row">
                   <div class="col-xs-12 text-center">
-                      <h3><b>Materijali:</b></h3><br>
+                      <h3 class="font-opcenito" style="font-size:17px;"><b>Materijali:</b></h3><br>
                       <h3 *ngIf="MaterijaliDocs.length <= 0" class="text-danger">Nema dodanih materijala.</h3><br>
                   </div>
                 </div>

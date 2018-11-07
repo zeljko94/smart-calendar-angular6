@@ -2,12 +2,12 @@
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
-      <h1>Tečajevi
+      <h1 class="font-opcenito">Tečajevi
         <small>Upravljanje tečajevima</small>
       </h1>
   
       <ol class="breadcrumb">
-          <li><a [routerLink]="['/predavac/dashboard']"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+          <li><a [routerLink]="['/predavac/dashboard']"><i class="fa fa-dashboard"></i> Nadzorna ploča</a></li>
           <li class="active">Tečajevi</li>
       </ol>
     </section>
@@ -124,11 +124,14 @@
   
                 <div class="row">
                   <div class="col-xs-2">
-                    <button type="button" class="btn btn-default btn-lg " (click)="changeMode('Add', rn)"><i class="fa fa-plus" ></i> Dodaj tečaj</button>
+                    <button type="button" class="btn btn-default" (click)="changeMode('Add', rn)"><i class="fa fa-plus" ></i> Dodaj tečaj</button>
                   </div>
-                  <div class="col-xs-10">
-                      <div class="input-group input-group-lg">
-                          <input [(ngModel)]="search" (keyup)="applyFilters()" class="form-control" placeholder="Search..." type="text">
+
+                  <div class="col-xs-7"></div>
+
+                  <div class="col-xs-3">
+                      <div class="input-group ">
+                          <input [(ngModel)]="search" (keyup)="applyFilters()" class="form-control" placeholder="Pretraži..." type="text">
                           <span class="input-group-addon"><i class="fa fa-search search-icon"></i></span>
                       </div>
                   </div>
@@ -136,15 +139,13 @@
                 <br>
   
           <div class="box">
-              <div class="box-header with-border">
-                  <h1 class="box-title" style="font-size: 25px;">Tečajevi</h1>  
-                </div>
+              
             <!-- /.box-header -->
             <div class="box-body">
                 <table id="tecajeviTable" class="table table-bordered table-hover table-striped">
                   <tbody>
-                    <tr style="font-size: 20px;" class="text-center">
-                        <th>#</th>
+                    <tr class="text-center">
+                        <th>Br.</th>
                         <th>Naziv</th>
                         <th>Opis</th>
                         <th>Jezik</th>
@@ -155,7 +156,7 @@
                         <!--<th class="text-center"><input type="checkbox" [(ngModel)]="checkAll" (change)="checkAllOnChange()" name="check-all" /></th>-->
                     </tr>
     
-                    <tr *ngFor="let rn of tecajevi; let i = index" style="font-size: 18px;" (click)="changeMode('Update',rn)">
+                    <tr *ngFor="let rn of tecajevi; let i = index" (click)="changeMode('Update',rn)">
                       <!--<td class="text-center" style="width: 3%;">{{((this.paginator.ps.currentPage-1) * this.paginator.ps.pageSize) + (i+1)}}.</td>-->
                       <td class="text-center" style="width: 3%;">{{i+1}}.</td>
                       <td>{{rn.Naziv}}</td>
@@ -165,12 +166,12 @@
                       <td>{{rn.TipNastave.Naziv}}</td>
                       <td style="width: 12%;" class="text-center">
                           <div class="btn-group">
-                              <button (click)="$event.stopPropagation();detalji(rn.ID)" type="button" class="btn btn-primary btn-lg"><i class="fa fa-info-circle"></i>&nbsp; Detalji</button>
+                              <button (click)="$event.stopPropagation();detalji(rn.ID)" type="button" class="btn btn-primary"><i class="fa fa-info-circle"></i>&nbsp; Detalji</button>
                           </div>
                       </td>
                       <td style="width: 12%;" class="text-center">
                           <div class="btn-group">
-                              <button (click)="$event.stopPropagation();brisi(rn.ID)" type="button" class="btn btn-danger btn-lg"><i class="fa fa-trash"></i>&nbsp; Briši</button>
+                              <button (click)="$event.stopPropagation();brisi(rn.ID)" type="button" class="btn btn-danger"><i class="fa fa-trash"></i>&nbsp; Briši</button>
                           </div>
                       </td>
                       <!--<td  class="text-center"><input type="checkbox" [value]="rn.ID" (change)="$event.stopPropagation()" name="data-checkbox" /></td>-->
