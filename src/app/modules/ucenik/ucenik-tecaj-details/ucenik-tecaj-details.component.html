@@ -174,7 +174,7 @@
                     <div class="col-xs-10">
   
                         <h1  *ngIf="nastavneCjeline.length <= 0" class="text-danger text-center font-profil">Nema unesenih nastavnih cjelina!</h1>
-                      <ul class="todo-list" style="font-size: 25px;" *ngIf="nastavneCjeline.length > 0">
+                      <ul class="todo-list" *ngIf="nastavneCjeline.length > 0">
                           <li *ngFor="let nc of nastavneCjeline; let i = index">
                             <span class="text" style="padding-right: 20px;">{{i+1}}.</span>
                             <!-- todo text -->

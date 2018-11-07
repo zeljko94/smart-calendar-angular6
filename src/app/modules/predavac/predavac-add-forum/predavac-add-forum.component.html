@@ -3,13 +3,13 @@
 <div class="content-wrapper" style="min-height: 600px;">
   <!-- Content Header (Page header) -->
   <section class="content-header">
-      <h1>
+      <h1 class="font-opcenito">
         Forum
         <small>Dodavanje foruma</small>
       </h1>
       
       <ol class="breadcrumb">
-          <li><a [routerLink]="['/admin/dashboard']"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+          <li><a [routerLink]="['/admin/dashboard']"><i class="fa fa-dashboard"></i> Nadzorna ploča</a></li>
           <li class="active">Forum</li>
       </ol>
     </section>
@@ -26,9 +26,7 @@
               <div class="row">
                 <div class="col-xs-12">
                   <div class="box" *ngIf="mode != ''">
-                      <div class="box-header with-border">
-                        <h1 class="box-title"><b>Dodaj forum</b></h1>
-                      </div>
+                      
                       <form class="form-horizontal">
 
                         <div class="box-body">
@@ -51,8 +49,8 @@
                         </div>
                         <!-- /.box-body -->
                         <div class="box-footer">
-                          <button type="button" (click)="spremi()" class="btn btn-success btn-lg" style="margin-right: 10px;"><i class="fa fa-save"></i>&nbsp; Spremi</button>
-                          <button type="button" (click)="forum={}" class="btn btn-danger btn-lg"><i class="fa fa-undo"></i>&nbsp; Reset</button>
+                          <button type="button" (click)="spremi()" class="btn btn-success" style="margin-right: 10px;"><i class="fa fa-save"></i>&nbsp; Spremi</button>
+                          <button type="button" (click)="forum={}" class="btn btn-danger"><i class="fa fa-undo"></i>&nbsp; Poništi</button>
                         </div>
                         <!-- /.box-footer -->
                       </form>
