@@ -1,14 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
 import { SwalService } from '../../services/swal.service';
+import * as $ from 'jquery';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent implements OnInit, AfterViewInit {
 
   email: string = "zeljko94@gmail.com";
   password: string = "asd";
@@ -26,6 +27,14 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit() {
+  }
+
+  ngAfterViewInit(){
+    $(document).keydown((e) => {
+      if(e.key === "Enter"){
+        this.login();
+      }
+    });
   }
 
   login(){

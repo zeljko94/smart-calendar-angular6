@@ -48,6 +48,7 @@ return o.Name + " " + o.LastName  + " - " + o.ID;
    
 destinationChange(ev){
 this.forum.SudioniciID = ev.map(e => e.ID);
+console.log(this.forum);
 }
 
 
@@ -60,7 +61,6 @@ this.forum.SudioniciID = ev.map(e => e.ID);
       if(this.id){
         this.forumService.getById(this.id)
           .subscribe(data => {
-            console.log(data);
             this.swal.hideLoading();
             this.isLoaded = true;
             this.forum = data.Data;

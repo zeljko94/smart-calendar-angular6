@@ -69,7 +69,7 @@
                             </ins>
                           </div>
                         </td>
-                        <td class="mailbox-star text-primary"><i [ngClass]="n.DateOpened ? 'fa fa-envelope-open-o' : 'fa fa-envelope'"></i></td>
+                        <td class="mailbox-star text-primary"><i [ngClass]="n.DateOpened ? 'fa fa-envelope-o' : 'fa fa-envelope'"></i></td>
                         <td class="mailbox-star text-primary"><i [ngClass]="n.Icon"></i></td>
                         <td class="mailbox-name"><a class="mailbox-name-link" [routerLink]=""  (click)="$event.stopPropagation();userDetails(n.CreatedUserID)">{{n.CreatedUserFullName}}</a></td>
                         <td class="mailbox-subject"><b>{{n.Title}}</b> - <span [innerHTML]="n.Body"></span>

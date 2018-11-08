@@ -16,7 +16,7 @@ export class NotificationDetailsComponent implements OnInit {
 
   constructor(
     private activatedRoute: ActivatedRoute,
-    private notificatinService: NotificationService
+    private notificationService: NotificationService
   ) { }
 
   ngOnInit() {
@@ -24,9 +24,12 @@ export class NotificationDetailsComponent implements OnInit {
       this.id = +params['id'];
 
       if(this.id){
-        this.notificatinService.getByID(this.id)
+        this.notificationService.getByID(this.id)
           .subscribe(data => {
             this.notification = data.Data;
+
+            this.notificationService.setOpenedTrue(this.id)
+              .subscribe(data => {});
           });
       }
     });

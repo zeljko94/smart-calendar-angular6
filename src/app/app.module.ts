@@ -81,6 +81,8 @@ import { PredavacAddForumComponent } from './modules/predavac/predavac-add-forum
 import { PredavacTecajDetailsComponent } from './modules/predavac/predavac-tecaj-details/predavac-tecaj-details.component';
 import { AdminUserProfileDetailsComponent } from './modules/admin/admin-user-profile-details/admin-user-profile-details.component';
 import { AdminNotificationDetailsComponent } from './modules/admin/admin-notification-details/admin-notification-details.component';
+import { ProfileSettingsComponent } from './components/profile-settings/profile-settings.component';
+import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
 
 
 
@@ -155,6 +157,8 @@ import { AdminNotificationDetailsComponent } from './modules/admin/admin-notific
     PredavacTecajDetailsComponent,
     AdminUserProfileDetailsComponent,
     AdminNotificationDetailsComponent,
+    ProfileSettingsComponent,
+    ForgotPasswordComponent,
   ],
   imports: [
     BrowserModule,

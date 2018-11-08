@@ -14,6 +14,10 @@ export class NotificationService {
     return this.http.getJWT(this.table + "/Get", {ID: id});
   }
 
+  setOpenedTrue(id){
+    return this.http.getJWT(this.table + "/SetOpenedTrue", {ID: id});
+  }
+
   
 
   notifyTecajInsert(TecajID, IssuerID){

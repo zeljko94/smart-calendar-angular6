@@ -33,9 +33,14 @@
                           <div [ngClass]="object.Color == '' ? 'form-group has-error has-feedback' : 'form-group'">
                               <label for="color" class="col-sm-2 control-label">Boja &nbsp;<i class="fa fa-paint-brush" aria-hidden="true"></i></label>
                               <div class="col-sm-3">
-                                <input type="text" [(colorPicker)]="object.Color" [style.background]="object.Color" />
+                                <input type="text" class="form-control" [value]="object.Color" [(colorPicker)]="object.Color" [style.background]="object.Color" />
                                 <p *ngIf="object.Color == ''" style="color: red;">Odaberite boju učionice!</p>
                               </div>
+                              <button class="btn btn-default" style="margin-left: 25px;" (click)="toClipboard(object.Color)">
+                                <i class="fa fa-clipboard"></i>
+                                &nbsp;&nbsp;
+                                Copy to clipboard
+                              </button>
                           </div>
                         </div>
                         <!-- /.box-body -->
