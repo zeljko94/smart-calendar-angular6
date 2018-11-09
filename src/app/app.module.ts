@@ -83,6 +83,7 @@ import { AdminUserProfileDetailsComponent } from './modules/admin/admin-user-pro
 import { AdminNotificationDetailsComponent } from './modules/admin/admin-notification-details/admin-notification-details.component';
 import { ProfileSettingsComponent } from './components/profile-settings/profile-settings.component';
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
+import { ResetPasswordComponent } from './components/reset-password/reset-password.component';
 
 
 
@@ -159,6 +160,7 @@ import { ForgotPasswordComponent } from './components/forgot-password/forgot-pas
     AdminNotificationDetailsComponent,
     ProfileSettingsComponent,
     ForgotPasswordComponent,
+    ResetPasswordComponent,
   ],
   imports: [
     BrowserModule,

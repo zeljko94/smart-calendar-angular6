@@ -51,6 +51,8 @@ import { PredavacTecajDetailsComponent } from "./modules/predavac/predavac-tecaj
 import { AdminUserProfileDetailsComponent } from "./modules/admin/admin-user-profile-details/admin-user-profile-details.component";
 import { AdminNotificationDetailsComponent } from "./modules/admin/admin-notification-details/admin-notification-details.component";
 import { ProfileSettingsComponent } from "./components/profile-settings/profile-settings.component";
+import { ForgotPasswordComponent } from "./components/forgot-password/forgot-password.component";
+import { ResetPasswordComponent } from "./components/reset-password/reset-password.component";
 
 
 
@@ -87,8 +89,13 @@ const appRoutes: Routes = [
     },
     { 
         path: 'forgot-password', 
-        component: ProfileSettingsComponent,
-        canActivate: [AuthGuard]
+        component: ForgotPasswordComponent,
+        //canActivate: [AuthGuard]
+    },
+    { 
+        path: 'reset-password/:token', 
+        component: ResetPasswordComponent,
+        //canActivate: [AuthGuard]
     },
     //#endregion
 

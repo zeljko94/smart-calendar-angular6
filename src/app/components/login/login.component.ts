@@ -37,6 +37,11 @@ export class LoginComponent implements OnInit, AfterViewInit {
     });
   }
 
+  
+  forgotPass(){
+    this.router.navigate(['/forgot-password']);
+  }
+
   login(){
     if(this.email){
       if(this.password){

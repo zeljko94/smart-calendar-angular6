@@ -85,15 +85,21 @@ export class UnosTerminaComponent implements OnInit {
 
   isInputValid(swal = true){
     if(this.termin.UcionicaID != '0'){
-      if(this.termin.PocetniDatum <= this.termin.ZavrsniDatum){
+      if(this.termin.PocetniDatum > Date.now() && this.termin.ZavrsniDatum > Date.now()){
+        if(this.termin.PocetniDatum <= this.termin.ZavrsniDatum){
 
-        // SUCCESS
-        return true;
+          // SUCCESS
+          return true;
+        }
+        else{
+          if(swal)
+            this.swal.err("Greška sa datumima!");
+          return false;
+        }
       }
       else{
         if(swal)
           this.swal.err("Greška sa datumima!");
-        return false;
       }
     }
     else{
