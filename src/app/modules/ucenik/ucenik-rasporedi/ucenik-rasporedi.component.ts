@@ -71,6 +71,7 @@ export class UcenikRasporediComponent implements OnInit {
         this.events = data.Data;
         
         $("#myCal").fullCalendar({
+          locale: 'hr',
           editable:  false,
           eventLimit: false,
           displayEventTime: false,

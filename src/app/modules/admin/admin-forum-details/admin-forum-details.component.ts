@@ -7,6 +7,7 @@ import { ForumService } from '../../../services/forum.service';
 import { ActivatedRoute } from '@angular/router';
 import { NotificationService } from '../../../services/notification.service';
 import { DualListComponent } from 'angular-dual-listbox';
+import { UceniciService } from '../../../services/rest/ucenici.service';
 
 @Component({
   selector: 'app-admin-forum-details',
@@ -31,6 +32,7 @@ export class AdminForumDetailsComponent implements OnInit, OnDestroy {
   constructor(
     private swal: SwalService,
     private notificationService: NotificationService,
+    private uceniciService: UceniciService,
     private activatedRoute: ActivatedRoute,
     private auth: AuthService,
     private userService: UserService,
@@ -47,8 +49,25 @@ return o.Name + " " + o.LastName  + " - " + o.ID;
 }
    
 destinationChange(ev){
-this.forum.SudioniciID = ev.map(e => e.ID);
-console.log(this.forum);
+  this.forum.SudioniciID = ev.map(e => e.ID);
+}
+
+save(){
+  var o = JSON.parse(JSON.stringify(this.forum));
+  delete o["source"];
+  delete o["destination"];
+  delete o["Posts"];
+  delete o["Sudionici"];
+  o["KreatorID"] = o.Kreator.ID;
+  delete o["Kreator"];
+  o.SudioniciID = this.forum.Sudionici.map(s => s.ID).toString();
+  this.forum.SudioniciID = o.SudioniciID;
+  this.forumService.update(o)
+    .subscribe(data => {
+      if(this.swal.handleResponse(data)){
+        
+      }
+    });
 }
 
 
@@ -61,9 +80,14 @@ console.log(this.forum);
       if(this.id){
         this.forumService.getById(this.id)
           .subscribe(data => {
+            this.uceniciService.getAll()
+              .subscribe(data => {
+                this.forum.source = data.Data;
+              });
             this.swal.hideLoading();
             this.isLoaded = true;
             this.forum = data.Data;
+            this.forum.destination = data.Data.Sudionici;
             this.sanitizer.usrProfileImg(this.forum.Kreator);
             for(var i=0; i<this.forum.Posts.length; i++){
               this.sanitizer.usrProfileImg(this.forum.Posts[i].Kreator);

@@ -20,6 +20,10 @@ export class ForumService {
     return this.http.getJWT("Forum/Get", {ID: id});
   }
 
+  update(o){
+    return this.http.postJWT("Forum/Update", o);
+  }
+
   insert(o){
     return this.http.postJWT("Forum/Insert", o);
   }
